@@ -43,3 +43,9 @@ def test_paper18_page7():
     page7 = paper18_page(7)
     parsed = geostrat.columns.parse(page7, column_count=3)
     assert len(parsed) == 3
+
+
+def test_paper18_page0_no_column():
+    page0 = paper18_page(0)
+    parsed = geostrat.columns.parse(page0, column_count=3)
+    assert not parsed
