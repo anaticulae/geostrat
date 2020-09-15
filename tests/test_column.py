@@ -30,10 +30,16 @@ def test_paper18_page14_complete():
 
 
 def test_paper18_page14_do_not_ignore_errors():
-    page14 = paper18_page14()
+    page14 = paper18_page(14)
     parsed = geostrat.columns.parse(
         page14,
         column_count=8,
         skip_overlapping=True,
     )
     assert not parsed
+
+
+def test_paper18_page7():
+    page7 = paper18_page(7)
+    parsed = geostrat.columns.parse(page7, column_count=3)
+    assert len(parsed) == 3
