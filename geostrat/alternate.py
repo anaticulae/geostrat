@@ -35,7 +35,7 @@ Requirements
 
 Example:
 
-..code-block:: none
+.. code-block:: none
 
     RÖLL, Franz J. (1998): Mythen und Symbole in populären Medien. Der wahrnehmungs
              orientierte Ansatz in der Medienpädagogik. Frankfurt a. Main: GEP.
@@ -54,7 +54,7 @@ Example:
 Title/Content Item
 ------------------
 
-..code-block:: none
+.. code-block:: none
 
     Moskowitz, H. & Fiorentino, D. (2000a). A review of    TITLE_ITEM
         regarding the effects of alcohol on driving-rel    CONTENT_ITEM
