@@ -1,0 +1,39 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2020 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
+import power
+import serializeraw
+
+import geostrat.columns
+
+
+def paper18_page(page: int):
+    navigators = serializeraw.create_pagetextnavigators_frompath(
+        power.link(power.PAPER18_PDF),
+        pages=(page,),
+    )
+    return navigators[0]
+
+
+def test_paper18_page14_complete():
+    page14 = paper18_page(14)
+    parsed = geostrat.columns.parse(page14, column_count=8)
+    assert len(parsed) == 8
+    assert parsed[0][0]  # first item in first column
+    assert parsed[-1][-1]  # last item in last column
+
+
+def test_paper18_page14_do_not_ignore_errors():
+    page14 = paper18_page14()
+    parsed = geostrat.columns.parse(
+        page14,
+        column_count=8,
+        skip_overlapping=True,
+    )
+    assert not parsed
