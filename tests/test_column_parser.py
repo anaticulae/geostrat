@@ -34,7 +34,7 @@ def test_parse_column_bachelor63_page59_all_columns():
         pages=pages,
     )
     page = navigators[0]
-    marker = geostrat.columns(page)
+    marker = geostrat.dc_columns(page)
     (short, description), _ = geostrat.split_bymarker(page, marker)
     inside_all = geostrat.all_columns(
         [short, description],

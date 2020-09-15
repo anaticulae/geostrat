@@ -16,7 +16,7 @@ from geostrat.alternate import ParserConfig
 from geostrat.alternate import parse_page as al_parse_page
 from geostrat.alternate import parse_pages as al_parse_pages
 from geostrat.double_column import all_columns
-from geostrat.double_column import columns
+from geostrat.double_column import columns as dc_columns
 from geostrat.double_column import parse_page as dc_parse_page
 from geostrat.double_column import split_bymarker
 from geostrat.utils import connect_text
