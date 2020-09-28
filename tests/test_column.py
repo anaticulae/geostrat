@@ -10,7 +10,7 @@
 import power
 import serializeraw
 
-import geostrat.columns
+import geostrat
 
 
 def paper18_page(page: int):
@@ -23,7 +23,7 @@ def paper18_page(page: int):
 
 def test_paper18_page14_complete():
     page14 = paper18_page(14)
-    parsed = geostrat.columns.parse(page14, column_count=8)
+    parsed = geostrat.parse(page14, column_count=8)
     assert len(parsed) == 8
     assert parsed[0][0]  # first item in first column
     assert parsed[-1][-1]  # last item in last column
@@ -31,7 +31,7 @@ def test_paper18_page14_complete():
 
 def test_paper18_page14_do_not_ignore_errors():
     page14 = paper18_page(14)
-    parsed = geostrat.columns.parse(
+    parsed = geostrat.parse(
         page14,
         column_count=8,
         skip_overlapping=True,
@@ -41,11 +41,11 @@ def test_paper18_page14_do_not_ignore_errors():
 
 def test_paper18_page7():
     page7 = paper18_page(7)
-    parsed = geostrat.columns.parse(page7, column_count=3)
+    parsed = geostrat.parse(page7, column_count=3)
     assert len(parsed) == 3
 
 
 def test_paper18_page0_no_column():
     page0 = paper18_page(0)
-    parsed = geostrat.columns.parse(page0, column_count=3)
+    parsed = geostrat.parse(page0, column_count=3)
     assert not parsed
