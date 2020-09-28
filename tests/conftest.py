@@ -23,6 +23,7 @@ RESOURCES = [
     (power.BACHELOR056_PDF, '45:55'),
     (power.BACHELOR063_PDF, '59:61'),
     (power.PAPER18_PDF, '0,7,14'),
+    (power.BACHELOR037_PDF, '33,34,35,36'),
 ]
 
 WORKER = 4
