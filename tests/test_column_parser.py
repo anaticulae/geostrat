@@ -43,3 +43,24 @@ def test_parse_column_bachelor63_page59_all_columns():
     text = [item.text.strip() for item in inside_all]
     # reducing vertical diff leads to droping out of detection
     assert '[Ohm91]' in text, text
+
+
+def test_extract_columns_bachelor37_page33():
+    source = power.link(power.BACHELOR037_PDF)
+    ptn = serializeraw.create_pagetextnavigators_frompath(source, pages=(33,))
+    ptn = ptn[0]
+    parsed = geostrat.parse(ptn)
+
+    # parse two columns
+    assert len(parsed) == 2
+
+
+def test_extract_columns_bachelor37_complete():
+    source = power.link(power.BACHELOR037_PDF)
+    ptns = serializeraw.create_pagetextnavigators_frompath(source)
+
+    doubled = [page.page for page in ptns if geostrat.parse(page)]
+
+    # it is possible that more than required pages can be inside
+    inside = [item in doubled for item in [33, 34, 35, 36]]
+    assert all(inside), str(inside)
