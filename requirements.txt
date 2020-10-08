@@ -7,5 +7,5 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utila==2.11.0
-iamraw==4.0.1 # texmex
+utila==2.12.0
+iamraw==4.1.0 # texmex
