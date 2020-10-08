@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.1.0
+
+### Feature
+
+* extend public API (e58980b301b6)
+
 ## v1.0.0
 
 ### Feature
