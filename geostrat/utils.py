@@ -23,9 +23,16 @@ def connect_text(items) -> str:
     items = [item.replace(utila.NEWLINE, ' ').strip() for item in items]
     # replace trennung
     items = [
-        item[0:-1] if item and item[-1] in ('-', chr(173)) else item
-        for item in items
+        item[0:-1] if item and isminus(item[-1]) else item for item in items
     ]
     raw = ''.join(items)
     raw = raw.replace(utila.NEWLINE, ' ')
     return raw
+
+
+def isminus(item):
+    """\
+    >>> isminus('-')
+    True
+    """
+    return item in ('-', chr(173))
