@@ -13,13 +13,18 @@ import utila
 
 
 def connect_text(items) -> str:
+    """\
+    >>> connect_text([''])
+    ''
+    """
     # TODO: REPLACE WITH MORE GENERAL APPRAOCH FROM A NICER PACKAGE
     with contextlib.suppress(AttributeError, TypeError):
         items = [item.text for item in items]
     items = [item.replace(utila.NEWLINE, ' ').strip() for item in items]
     # replace trennung
     items = [
-        item[0:-1] if item[-1] in ('-', chr(173)) else item for item in items
+        item[0:-1] if item and item[-1] in ('-', chr(173)) else item
+        for item in items
     ]
     raw = ''.join(items)
     raw = raw.replace(utila.NEWLINE, ' ')
