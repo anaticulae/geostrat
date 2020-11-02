@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.1.3
+
+### Fix
+
+* skip empty item (68c0025699d1)
+
 ## v1.1.2
 
 ## v1.1.1
