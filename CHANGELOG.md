@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.1.7
+
+### Fix
+
+* ensure that matching with empty page is skipped (b329aa89ed5a)
+
 ## v1.1.6
 
 ## v1.1.5
