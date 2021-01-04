@@ -26,7 +26,7 @@ RESOURCES = [
     (power.BACHELOR037_PDF, '33,34,35,36'),
 ]
 
-WORKER = 4
+WORKER = 6
 
 
 def pytest_sessionstart(session):  # pylint:disable=W0613
