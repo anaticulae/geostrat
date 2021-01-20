@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.1.9
+
+### Fix
+
+* group last item in double column strategy correctly (25dc73af3e5b)
+
+### Documentation
+
+* Happy New Year! (d6cad8615c21)
+
 ## v1.1.8
 
 ## v1.1.7
