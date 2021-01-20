@@ -48,7 +48,6 @@ def parse_page(page) -> list:
     adjusted = adjust_columns(
         short_column,
         description_column,
-        line_gaps,
         short_mark,
     )
     if adjusted is None:
@@ -81,7 +80,20 @@ def overlapping_column(short, description):
     return mixig
 
 
-def adjust_columns(short_column, description_column, line_gaps, short_marker):
+def leftbounding(left, lasty1) -> list:
+    result = []
+    for first, second in zip(left[:-1], left[1:]):
+        result.append((first.bounding[1], second.bounding[1]))
+    # TODO: USE MAX DISTANCE?
+    # TODO: IS LAST_Y1 THE BEST?
+    # add last box defined by mean box height of items before
+    # meandiff = statistics.mean([second - first for first, second in result])
+    # result.append((result[-1][1], result[-1][1] + meandiff))
+    result.append((result[-1][1], lasty1))
+    return result
+
+
+def adjust_columns(short_column, description_column, short_marker):
     """Adjust multi line columns. Group right side items to
     corresponding left side shortcut."""
     inside_all = all_columns([short_column, description_column])
@@ -90,8 +102,10 @@ def adjust_columns(short_column, description_column, line_gaps, short_marker):
         if utila.near(item.bounding[0], short_marker)
     ]
     right = []
-    for first, second in zip(left[:-1], left[1:]):
-        start, end = first.bounding[1], second.bounding[1]
+    lasty1 = description_column[-1].bounding[3]  # y1 of last item
+    leftgoal = leftbounding(left, lasty1)
+    for start, end in leftgoal:
+        # start, end = first.bounding[1], second.bounding[1]
         start = start - 5.0  # TODO: HOLY VALUE, give some tolerance
         right.append([
             item for item in description_column
@@ -100,27 +114,6 @@ def adjust_columns(short_column, description_column, line_gaps, short_marker):
     if not left or not right:
         # could not adjust multiline colum
         return None
-
-    # TODO: DIRTY, move to separate method
-    # group last item
-    start = left[-1].bounding[1]
-    if len(line_gaps) >= 2:
-        # biggest item is distance between multiline shortcut lines
-        # second biggest item is normal line distance
-        max_gap = line_gaps[1]
-    else:
-        # only single lines, no multiline shortcut lines
-        max_gap = line_gaps[0]
-    last = []
-    for item in description_column:
-        if item.bounding[1] < start:
-            continue
-        if (item.bounding[1] - start) > max_gap:
-            # gap after content is to big
-            break
-        last.append(item)
-        start = item.bounding[3]
-    right.append(last)
     assert len(left) == len(right), 'could not parse both columns correctly'
     return left, right
 
@@ -184,7 +177,6 @@ def columns(page) -> utila.Numbers:
     for item in page:
         x0 = item.bounding[0]
         collected.append(x0)
-
     clustered = utila.max_distance(
         collected,
         diff=2.0,  # TODO: HOLY VALUE
@@ -192,7 +184,6 @@ def columns(page) -> utila.Numbers:
     )
     if len(clustered) < 2:
         return None
-
     result = [item[0] for item in clustered]
     result = sorted(result)
     return result
