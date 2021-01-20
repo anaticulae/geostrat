@@ -29,16 +29,16 @@ def parse_page(page) -> list:
     if not line_gaps:
         utila.debug('no line gaps; skip strategy')
         return None
-
     marker = columns(page)
     if not marker:
         return None
-
     (short_column, description_column), short_mark = split_bymarker(
         page,
         marker,
     )
-
+    if not short_column or not description_column:
+        utila.debug('no short or long column; skip strategy')
+        return None
     overlapping = overlapping_column(short_column, description_column)
     if overlapping:
         # TODO: EXTEND ERROR MESSAGE
@@ -101,6 +101,9 @@ def adjust_columns(short_column, description_column, short_marker):
         item for item in inside_all
         if utila.near(item.bounding[0], short_marker)
     ]
+    if len(left) <= 1:
+        # require at least two elements to determine height of area
+        return None
     right = []
     lasty1 = description_column[-1].bounding[3]  # y1 of last item
     leftgoal = leftbounding(left, lasty1)
