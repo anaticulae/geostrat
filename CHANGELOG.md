@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.1.10
+
+### Fix
+
+* skip algorithm for empty column (c11e9191bba7)
+
 ## v1.1.9
 
 ### Fix
