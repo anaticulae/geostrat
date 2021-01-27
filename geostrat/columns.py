@@ -38,6 +38,9 @@ def parse(
         list of columns with data
         None if extraction fails
     """
+    if not navigator:
+        # empty navigator
+        return None
     assert column_count >= 1, str(column_count)
     assert (navigator.width / column_count) >= (2 * column_diff), (
         f'{(navigator.width / column_count)} >= {(2 * column_diff)}')
