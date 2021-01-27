@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.1.11
+
+### Fix
+
+* skip empty container (7d0a739d27a7)
+
 ## v1.1.10
 
 ### Fix
