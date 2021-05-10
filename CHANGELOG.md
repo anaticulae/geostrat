@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.1.12
+
+### Feature
+
+* merge more than one line to page before (5180f24a755e)
+
 ## v1.1.11
 
 ### Fix
