@@ -128,16 +128,29 @@ def unite_hurenkind(pages: list) -> list:
             # empty page
             result.append(page)
             continue
-        # TODO: WHY BOUNDING 0 x0? and not X1
-        matched = utila.near(page[0][0].bounding[0], right, diff=MAX_LINE_DIFF)
         pagebefore_exists = result[-1]
-        if pagebefore_exists and matched:
-            # move hurenkind to page before
-            result[-1][-1].extend(page[0])
-            # remove hurenkind from current page
-            result.append(page[1:])
-        else:
+        if not pagebefore_exists:
             result.append(page)
+            continue
+        befored = before(page, right)
+        if befored:
+            # move hurenkinds to page before
+            result[-1][-1].extend(befored)
+            # remove hurenkind from current page
+            result.append(page[len(befored):])
+            continue
+        result.append(page)
+    return result
+
+
+def before(page, right):
+    result = []
+    for item in page:
+        # TODO: WHY BOUNDING 0 x0? and not X1
+        matched = utila.near(item[0].bounding[0], right, diff=MAX_LINE_DIFF)
+        if not matched:
+            break
+        result.append(item[0])
     return result
 
 
