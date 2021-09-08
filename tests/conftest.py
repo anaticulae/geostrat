@@ -39,5 +39,9 @@ def extract(resources):
         resources + [power.REPOSITORY],
         destination=destination,
         worker=WORKER,
+        groupme='--footer --content --pagenumbers',
+        formulero=False,
+        tablero=False,
+        rawmaker_cleanup=False,
         pages=':',
     )
