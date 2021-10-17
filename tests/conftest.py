@@ -36,12 +36,9 @@ def pytest_sessionstart(session):  # pylint:disable=W0613
 def extract(resources):
     destination = power.generated()
     genex.extract(
-        resources + [power.REPOSITORY],
+        resources,
         destination=destination,
         worker=WORKER,
         groupme='--footer --content --pagenumbers',
-        formulero=False,
-        tablero=False,
-        rawmaker_cleanup=False,
         pages=':',
     )
