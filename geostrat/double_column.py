@@ -23,6 +23,18 @@ import configo
 import texmex
 import utila
 
+ADJUST_COLUMNS_TOLERENACE = configo.HV_FLOAT_PLUS(default=5.0)
+
+COLUMNS_DIFF_MAX = configo.HV_FLOAT_PLUS(default=2.0)
+
+COLUMNS_ELEMENTS_MIN = configo.HV_INT_PLUS(default=5)
+
+MIN_LINE_GAP = configo.HV_FLOAT_PLUS(10.0)
+
+LINES_DIFF_MAX = configo.HV_FLOAT_PLUS(default=2.0)
+
+LINES_ELEMENTS_MIN = configo.HV_INT_PLUS(default=5.0)
+
 
 def parse_page(page) -> list:
     line_gaps = lines(page)
@@ -109,7 +121,8 @@ def adjust_columns(short_column, description_column, short_marker):
     leftgoal = leftbounding(left, lasty1)
     for start, end in leftgoal:
         # start, end = first.bounding[1], second.bounding[1]
-        start = start - 5.0  # TODO: HOLY VALUE, give some tolerance
+        # give some tolerance
+        start = start - ADJUST_COLUMNS_TOLERENACE
         right.append([
             item for item in description_column
             if start <= item.bounding[1] <= item.bounding[3] <= end
@@ -182,8 +195,8 @@ def columns(page) -> utila.Numbers:
         collected.append(x0)
     clustered = utila.max_distance(
         collected,
-        diff=2.0,  # TODO: HOLY VALUE
-        min_elements=5  # TODO: HOLY VALUE
+        diff=COLUMNS_DIFF_MAX,
+        min_elements=COLUMNS_ELEMENTS_MIN,
     )
     if len(clustered) < 2:
         return None
@@ -192,15 +205,12 @@ def columns(page) -> utila.Numbers:
     return result
 
 
-MIN_LINE_GAP = configo.HV_FLOAT_PLUS(10.0)
-
-
 def lines(page) -> utila.Numbers:
     line_distance = texmex.linedistances(page, noneatend=False)
     clustered = utila.max_distance(
         line_distance,
-        diff=2.0,  # TODO: HOLY VALUE
-        min_elements=5  # TODO: HOLY VALUE
+        diff=LINES_DIFF_MAX,
+        min_elements=LINES_ELEMENTS_MIN,
     )
     result = [item[0] for item in clustered if item[0] >= MIN_LINE_GAP]
     # huggest element first

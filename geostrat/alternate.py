@@ -64,15 +64,17 @@ Title/Content Item
 
 import dataclasses
 
+import configo
 import texmex
 import utila
 
 import geostrat.utils
 
-MIN_LINE_ELEMENT = 2  # TODO: HOLY VALUE
-MAX_LINE_DIFF = 10
+MIN_LINE_ELEMENT = configo.HV_INT_PLUS(default=2)
 
-MAX_TEXT_DIFF = 2.5
+MAX_LINE_DIFF = configo.HV_FLOAT_PLUS(default=10.0)
+
+MAX_TEXT_DIFF = configo.HV_FLOAT_PLUS(default=2.5)
 
 
 @dataclasses.dataclass
