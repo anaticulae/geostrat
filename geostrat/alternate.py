@@ -203,19 +203,19 @@ def parse_page(page, lining_points=None, config: ParserConfig = None) -> list:  
                 # alternating position
                 current = x0
                 result.append([line])
-            else:
-                if config.main_split:
-                    # mainsplit: ensure to start with `Title Item`, see above.
-                    # Ensure to handle `Hurenkind` correctly.
-                    if utila.near(min(starts), x0, diff=MAX_LINE_DIFF):
-                        # page starts with hurenkind
-                        result.append([line])
-                        current = x0
-                    else:
-                        result[-1].append(line)
+                continue
+            if config.main_split:
+                # mainsplit: ensure to start with `Title Item`, see above.
+                # Ensure to handle `Hurenkind` correctly.
+                if utila.near(min(starts), x0, diff=MAX_LINE_DIFF):
+                    # page starts with hurenkind
+                    result.append([line])
+                    current = x0
                 else:
-                    # member of group
                     result[-1].append(line)
+            else:
+                # member of group
+                result[-1].append(line)
     # remove items with to few content
     result = [item for item in result if valid_content(item, config)]
     return result
