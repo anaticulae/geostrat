@@ -29,7 +29,7 @@ COLUMNS_DIFF_MAX = configo.HV_FLOAT_PLUS(default=2.0)
 
 COLUMNS_ELEMENTS_MIN = configo.HV_INT_PLUS(default=5)
 
-MIN_LINE_GAP = configo.HV_FLOAT_PLUS(default=10.0)
+LINE_GAP_MIN = configo.HV_FLOAT_PLUS(default=10.0)
 
 LINES_DIFF_MAX = configo.HV_FLOAT_PLUS(default=2.0)
 
@@ -212,7 +212,7 @@ def lines(page) -> utila.Numbers:
         diff=LINES_DIFF_MAX,
         min_elements=LINES_ELEMENTS_MIN,
     )
-    result = [item[0] for item in clustered if item[0] >= MIN_LINE_GAP]
+    result = [item[0] for item in clustered if item[0] >= LINE_GAP_MIN]
     # huggest element first
     result = sorted(result, reverse=True)
     return result

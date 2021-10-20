@@ -70,11 +70,11 @@ import utila
 
 import geostrat.utils
 
-MIN_LINE_ELEMENT = configo.HV_INT_PLUS(default=2)
+LINE_ELEMENT_MIN = configo.HV_INT_PLUS(default=2)
 
-MAX_LINE_DIFF = configo.HV_FLOAT_PLUS(default=10.0)
+LINE_DIFF_MAX = configo.HV_FLOAT_PLUS(default=10.0)
 
-MAX_TEXT_DIFF = configo.HV_FLOAT_PLUS(default=2.5)
+TEXT_DIFF_MAX = configo.HV_FLOAT_PLUS(default=2.5)
 
 
 @dataclasses.dataclass
@@ -149,7 +149,7 @@ def before(page, right):
     result = []
     for item in page:
         # TODO: WHY BOUNDING 0 x0? and not X1
-        matched = utila.near(item[0].bounding[0], right, diff=MAX_LINE_DIFF)
+        matched = utila.near(item[0].bounding[0], right, diff=LINE_DIFF_MAX)
         if not matched:
             break
         result.append(item[0])
@@ -185,7 +185,7 @@ def parse_page(page, lining_points=None, config: ParserConfig = None) -> list:  
     current = None
     for line in page:
         x0 = line.bounding[0]
-        if not utila.near(textsize, line.style.textsize(), MAX_TEXT_DIFF):
+        if not utila.near(textsize, line.style.textsize(), TEXT_DIFF_MAX):
             # illegal font size
             current = None
             continue
@@ -201,7 +201,7 @@ def parse_page(page, lining_points=None, config: ParserConfig = None) -> list:  
                 # illegal line feed
                 current = None
                 continue
-            if utila.near(current, x0, diff=MAX_LINE_DIFF):
+            if utila.near(current, x0, diff=LINE_DIFF_MAX):
                 # alternating position
                 current = x0
                 result.append([line])
@@ -209,7 +209,7 @@ def parse_page(page, lining_points=None, config: ParserConfig = None) -> list:  
             if config.main_split:
                 # mainsplit: ensure to start with `Title Item`, see above.
                 # Ensure to handle `Hurenkind` correctly.
-                if utila.near(min(starts), x0, diff=MAX_LINE_DIFF):
+                if utila.near(min(starts), x0, diff=LINE_DIFF_MAX):
                     # page starts with hurenkind
                     result.append([line])
                     current = x0
@@ -231,7 +231,7 @@ def external_lining_points(pages):
     starts = utila.flatten(starts)
     clustered = utila.max_distance(
         starts,
-        diff=MAX_LINE_DIFF,
+        diff=LINE_DIFF_MAX,
         min_elements=1,
     )
     starts = [item.center for item in clustered]
@@ -251,15 +251,15 @@ def valid_content(item, config):
 
 
 def inside(starts, value):
-    return any((utila.near(item, value, MAX_LINE_DIFF) for item in starts))
+    return any((utila.near(item, value, LINE_DIFF_MAX) for item in starts))
 
 
 def group_line_start(page):
     x0_pos = [item.bounding[0] for item in page]
     clusters = utila.max_distance(
         x0_pos,
-        diff=MAX_LINE_DIFF,
-        min_elements=MIN_LINE_ELEMENT,
+        diff=LINE_DIFF_MAX,
+        min_elements=LINE_ELEMENT_MIN,
     )
     if len(clusters) < 2:
         return None
