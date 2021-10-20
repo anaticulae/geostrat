@@ -17,11 +17,11 @@ import utila
 
 
 def parse(
-        navigator: texmex.NavigatorMixin,
-        column_count: int = 2,
-        column_elements_min: int = 10,
-        column_diff: float = 25.0,
-        skip_overlapping: bool = False,
+    navigator: texmex.NavigatorMixin,
+    column_count: int = 2,
+    column_elements_min: int = 10,
+    column_diff: float = 25.0,
+    skip_overlapping: bool = False,
 ) -> list:
     """Detect n-column_count columns and parse data.
 
@@ -73,10 +73,10 @@ def parse(
 
 
 def determine_marker(
-        page,
-        column_count: int,
-        min_elements: int,
-        column_diff: float,
+    page,
+    column_count: int,
+    min_elements: int,
+    column_diff: float,
 ) -> utila.Numbers:
     """Sort columns from left to right."""
     collected = [item.bounding[0] for item in page]  # x0 bounding
@@ -111,11 +111,11 @@ def split_bymarker(page, markers, skip_overlapping: bool, column_diff: float):
 
 
 def column_data(
-        page,
-        x0,
-        x1,
-        skip_overlapping: bool,
-        column_diff: float = 25.0,
+    page,
+    x0,
+    x1,
+    skip_overlapping: bool,
+    column_diff: float = 25.0,
 ):
     """Filter items by x0 coordinate. Find items which are on a vertical
     line."""
