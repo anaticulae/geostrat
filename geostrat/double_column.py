@@ -29,11 +29,11 @@ COLUMNS_DIFF_MAX = configo.HV_FLOAT_PLUS(default=2.0)
 
 COLUMNS_ELEMENTS_MIN = configo.HV_INT_PLUS(default=5)
 
-MIN_LINE_GAP = configo.HV_FLOAT_PLUS(10.0)
+MIN_LINE_GAP = configo.HV_FLOAT_PLUS(default=10.0)
 
 LINES_DIFF_MAX = configo.HV_FLOAT_PLUS(default=2.0)
 
-LINES_ELEMENTS_MIN = configo.HV_INT_PLUS(default=5.0)
+LINES_ELEMENTS_MIN = configo.HV_INT_PLUS(default=5)
 
 
 def parse_page(page) -> list:
