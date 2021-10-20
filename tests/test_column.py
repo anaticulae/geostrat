@@ -65,3 +65,10 @@ def test_bachelor67page63_double_column():
     left, right = parsed
     assert len(left) == 10
     assert len(right) == 26
+
+
+def test_column_adjust_data():
+    page0 = bachelor67(63)
+    parsed = geostrat.parse(page0, column_count=2)
+    adjusted = geostrat.adjust_data(parsed)
+    assert len(adjusted) == 10

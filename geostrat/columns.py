@@ -130,3 +130,24 @@ def column_data(
             continue
         result.append(item)
     return result
+
+
+def adjust_data(data, column=0) -> list:
+    adjustment = [(item.bounding[1], item.bounding[3]) for item in data[column]]
+    borders = [(current[0], after[0])
+               for current, after in zip(adjustment[:-1], adjustment[1:])]
+    borders.append((borders[-1][1], utila.INF))
+    result = []
+    for border in borders:
+        line = []
+        for col in data:
+            content = [
+                item for item in col if utila.isinside(
+                    value=(item.bounding[1] + item.bounding[3]) / 2,
+                    left=border[0],
+                    right=border[1],
+                )
+            ]
+            line.append(tuple(content))
+        result.append(tuple(line))
+    return tuple(result)
