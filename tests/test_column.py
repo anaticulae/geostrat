@@ -21,6 +21,14 @@ def paper18_page(page: int):
     return navigators[0]
 
 
+def bachelor67(page: int):
+    navigators = serializeraw.create_pagetextnavigators_frompath(
+        power.link(power.BACHELOR067_PDF),
+        pages=(page,),
+    )
+    return navigators[0]
+
+
 def test_paper18_page14_complete():
     page14 = paper18_page(14)
     parsed = geostrat.parse(page14, column_count=8)
@@ -49,3 +57,11 @@ def test_paper18_page0_no_column():
     page0 = paper18_page(0)
     parsed = geostrat.parse(page0, column_count=3)
     assert not parsed
+
+
+def test_bachelor67page63_double_column():
+    page0 = bachelor67(63)
+    parsed = geostrat.parse(page0, column_count=2)
+    left, right = parsed
+    assert len(left) == 10
+    assert len(right) == 26
