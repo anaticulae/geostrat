@@ -8,8 +8,6 @@
 # =============================================================================
 """N-Column parser
 ===============
-
-# TODO: ADD OPTION TO ADJUST CONTENT HORIZONTALLY
 """
 
 import texmex
@@ -22,6 +20,7 @@ def parse(
     column_elements_min: int = 10,
     column_diff: float = 25.0,
     skip_overlapping: bool = False,
+    data_adjust: bool = False,
 ) -> list:
     """Detect n-column_count columns and parse data.
 
@@ -34,6 +33,7 @@ def parse(
         column_diff(float): max x0 diff to fit in the same column
         skip_overlapping(bool): if True, the whole page must fit in
                                 column-raster, if not None is returned
+        data_adjust(bool): align data in horizonal lines
     Returns:
         list of columns with data
         None if extraction fails
@@ -52,13 +52,11 @@ def parse(
     )
     if not marker:
         return None
-
     if len(marker) != column_count:
         utila.debug(f'invalid marker count; expected: {column_count} '
                     f'current: {len(marker)} page: {navigator.page}')
         utila.debug('skip column extraction')
         return None
-
     data = split_bymarker(
         navigator,
         marker,
@@ -69,6 +67,8 @@ def parse(
         if any(item is None for item in data):  # None is important here
             utila.debug('could not analyze, columns are mixed/ambigous')
             return None
+    if data_adjust:
+        data = adjust_data(data)
     return data
 
 
