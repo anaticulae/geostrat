@@ -24,6 +24,7 @@ RESOURCES = [
     (power.BACHELOR063_PDF, '59:61'),
     (power.PAPER18_PDF, '0,7,14'),
     (power.BACHELOR037_PDF, '2,33,34,35,36'),
+    genex.todo(power.BACHELOR067_PDF, pages='63', rawmaker='--char_margin=1.1'),
 ]
 
 WORKER = 6
