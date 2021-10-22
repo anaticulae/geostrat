@@ -133,9 +133,13 @@ def column_data(
 
 
 def adjust_data(data, column=0) -> list:
+    if not data:
+        return []
     adjustment = [(item.bounding[1], item.bounding[3]) for item in data[column]]
     borders = [(current[0], after[0])
                for current, after in zip(adjustment[:-1], adjustment[1:])]
+    if len(borders) <= 1:
+        return []
     borders.append((borders[-1][1], utila.INF))
     result = []
     for border in borders:
