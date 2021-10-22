@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.3.1
+
+### Fix
+
+* skip empty data selector (ccfe3543f1e5)
+
 ## v1.3.0
 
 ### Feature
