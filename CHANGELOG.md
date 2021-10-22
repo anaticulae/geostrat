@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.3.0
+
+### Feature
+
+* add parameter to align data in rows (c0ecb74f09fb)
+* add method to adjust column data (87e2ecc3f875)
+
 ## v1.2.0
 
 ## v1.1.12
