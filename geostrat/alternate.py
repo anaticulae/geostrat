@@ -68,8 +68,6 @@ import configo
 import texmex
 import utila
 
-import geostrat.utils
-
 LINE_ELEMENT_MIN = configo.HV_INT_PLUS(default=2)
 
 LINE_DIFF_MAX = configo.HV_FLOAT_PLUS(default=10.0)
@@ -242,7 +240,10 @@ def external_lining_points(pages):
 
 
 def valid_content(item, config):
-    item = geostrat.utils.connect_text(item)
+    item = texmex.connect_text(
+        item,
+        normalize_newline=False,
+    )
     if len(item) < config.min_content_length:
         return False
     if len(item.split()) < config.min_word_count:
