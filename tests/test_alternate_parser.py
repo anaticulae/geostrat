@@ -38,8 +38,10 @@ def test_parse_master116_page(page, expected):
 @utilatest.requires(power.MASTER089_PDF)
 def test_parse_master89_external_liningpoints():
     """Page 80 has to few content items to determine the lining points.
+
     Therefore the external lining points of page 79 are used to
-    determine the bibliograpy on page 80."""
+    determine the bibliograpy on page 80.
+    """
     pages = (79, 80)
     expected = (14, 1)
     parsed = load_and_parse(pages, power.link(power.MASTER089_PDF))
