@@ -22,7 +22,7 @@ import geostrat
     (99, 15),
     (100, 3),
 ])
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_parse_master116_page(page, expected):
     navigators = serializeraw.create_pagetextnavigators_frompath(
         power.link(power.MASTER116_PDF),
@@ -33,7 +33,7 @@ def test_parse_master116_page(page, expected):
     assert len(parsed) == expected, str(parsed)
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_parse_master89_external_liningpoints():
     """Page 80 has to few content items to determine the lining points.
     Therefore the external lining points of page 79 are used to
