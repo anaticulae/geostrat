@@ -16,7 +16,7 @@ import geostrat
 
 def paper18_page(page: int):
     utilatest.fixture_requires(power.PAPER18_PDF)
-    navigators = serializeraw.create_pagetextnavigators_frompath(
+    navigators = serializeraw.ptn_frompath(
         power.link(power.PAPER18_PDF),
         pages=(page,),
     )
@@ -25,7 +25,7 @@ def paper18_page(page: int):
 
 def bachelor67(page: int):
     utilatest.fixture_requires(power.BACHELOR067_PDF)
-    navigators = serializeraw.create_pagetextnavigators_frompath(
+    navigators = serializeraw.ptn_frompath(
         power.link(power.BACHELOR067_PDF),
         pages=(page,),
     )

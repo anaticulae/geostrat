@@ -19,7 +19,7 @@ import geostrat.double_column
 def test_parse_column_bachelor63_page59():
     """Latex double column. Left side with [Hem10] pattern"""
     pages = (59)
-    navigators = serializeraw.create_pagetextnavigators_frompath(
+    navigators = serializeraw.ptn_frompath(
         power.link(power.BACHELOR063_PDF),
         # fill_empty=False,
         pages=pages,
@@ -32,7 +32,7 @@ def test_parse_column_bachelor63_page59():
 def test_parse_column_bachelor63_page59_all_columns():
     """Latex double column. Left side with [Hem10] pattern"""
     pages = (59,)
-    navigators = serializeraw.create_pagetextnavigators_frompath(
+    navigators = serializeraw.ptn_frompath(
         power.link(power.BACHELOR063_PDF),
         # fill_empty=False,
         pages=pages,
@@ -52,7 +52,7 @@ def test_parse_column_bachelor63_page59_all_columns():
 @utilatest.requires(power.BACHELOR037_PDF)
 def test_extract_columns_bachelor37page33():
     source = power.link(power.BACHELOR037_PDF)
-    ptn = serializeraw.create_pagetextnavigators_frompath(source, pages=(33,))
+    ptn = serializeraw.ptn_frompath(source, pages=(33,))
     ptn = ptn[0]
     parsed = geostrat.parse(ptn)
     # parse two columns
@@ -62,7 +62,7 @@ def test_extract_columns_bachelor37page33():
 @utilatest.requires(power.BACHELOR037_PDF)
 def test_extract_columns_bachelor37page2():
     source = power.link(power.BACHELOR037_PDF)
-    ptn = serializeraw.create_pagetextnavigators_frompath(source, pages=(2,))[0]
+    ptn = serializeraw.ptn_frompath(source, pages=(2,))[0]
     parsed = geostrat.parse(ptn)
     # parse two columns
     assert len(parsed) == 2
@@ -73,7 +73,7 @@ def test_extract_columns_bachelor37page2():
 @utilatest.requires(power.BACHELOR037_PDF)
 def test_extract_columns_bachelor37complete():
     source = power.link(power.BACHELOR037_PDF)
-    ptns = serializeraw.create_pagetextnavigators_frompath(source)
+    ptns = serializeraw.ptn_frompath(source)
     doubled = [page.page for page in ptns if geostrat.parse(page)]
     # it is possible that more than required pages can be inside
     inside = [item in doubled for item in [33, 34, 35, 36]]
@@ -83,7 +83,7 @@ def test_extract_columns_bachelor37complete():
 @utilatest.requires(power.BACHELOR037_PDF)
 def test_geometry_all_columns_bachelor37page2():
     source = power.link(power.BACHELOR037_PDF)
-    ptn = serializeraw.create_pagetextnavigators_frompath(source, pages=(2,))[0]
+    ptn = serializeraw.ptn_frompath(source, pages=(2,))[0]
     columns = [
         geostrat.double_column.column_data(ptn, x0=item)
         for item in geostrat.dc_columns(ptn)

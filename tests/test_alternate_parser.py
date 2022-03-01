@@ -25,7 +25,7 @@ import geostrat
 @utilatest.longrun
 @utilatest.requires(power.MASTER116_PDF)
 def test_parse_master116_page(page, expected):
-    navigators = serializeraw.create_pagetextnavigators_frompath(
+    navigators = serializeraw.ptn_frompath(
         power.link(power.MASTER116_PDF),
         prefix='oneline',
         pages=page,
@@ -74,7 +74,7 @@ def test_parse_bachelor56_page5051_hurenkind_unite():
 
 def load_and_parse(pages, resources: str):
     utilatest.fixture_requires(power.BACHELOR056_PDF)
-    navigators = serializeraw.create_pagetextnavigators_frompath(
+    navigators = serializeraw.ptn_frompath(
         resources,
         prefix='oneline',
         pages=pages,
