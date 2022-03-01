@@ -9,11 +9,13 @@
 
 import power
 import serializeraw
+import utilatest
 
 import geostrat
 import geostrat.double_column
 
 
+@utilatest.requires(power.BACHELOR063_PDF)
 def test_parse_column_bachelor63_page59():
     """Latex double column. Left side with [Hem10] pattern"""
     pages = (59)
@@ -26,6 +28,7 @@ def test_parse_column_bachelor63_page59():
     assert len(parsed) == 12, str(parsed)
 
 
+@utilatest.requires(power.BACHELOR063_PDF)
 def test_parse_column_bachelor63_page59_all_columns():
     """Latex double column. Left side with [Hem10] pattern"""
     pages = (59,)
@@ -46,6 +49,7 @@ def test_parse_column_bachelor63_page59_all_columns():
     assert '[Ohm91]' in text, text
 
 
+@utilatest.requires(power.BACHELOR037_PDF)
 def test_extract_columns_bachelor37page33():
     source = power.link(power.BACHELOR037_PDF)
     ptn = serializeraw.create_pagetextnavigators_frompath(source, pages=(33,))
@@ -55,6 +59,7 @@ def test_extract_columns_bachelor37page33():
     assert len(parsed) == 2
 
 
+@utilatest.requires(power.BACHELOR037_PDF)
 def test_extract_columns_bachelor37page2():
     source = power.link(power.BACHELOR037_PDF)
     ptn = serializeraw.create_pagetextnavigators_frompath(source, pages=(2,))[0]
@@ -65,6 +70,7 @@ def test_extract_columns_bachelor37page2():
     assert len(parsed[1]) == 20, str(parsed[1])
 
 
+@utilatest.requires(power.BACHELOR037_PDF)
 def test_extract_columns_bachelor37complete():
     source = power.link(power.BACHELOR037_PDF)
     ptns = serializeraw.create_pagetextnavigators_frompath(source)
@@ -74,6 +80,7 @@ def test_extract_columns_bachelor37complete():
     assert all(inside), str(inside)
 
 
+@utilatest.requires(power.BACHELOR037_PDF)
 def test_geometry_all_columns_bachelor37page2():
     source = power.link(power.BACHELOR037_PDF)
     ptn = serializeraw.create_pagetextnavigators_frompath(source, pages=(2,))[0]
