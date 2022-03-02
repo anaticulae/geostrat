@@ -63,6 +63,9 @@ def parse(
         skip_overlapping=skip_overlapping,
         column_diff=column_diff,
     )
+    if unbalanced_columns(data):
+        utila.debug(f'unbalanced_columns: {navigator.page}')
+        return None
     if skip_overlapping:
         if any(item is None for item in data):  # None is important here
             utila.debug('could not analyze, columns are mixed/ambigous')
@@ -70,6 +73,12 @@ def parse(
     if data_adjust:
         data = adjust_data(data)
     return data
+
+
+def unbalanced_columns(data) -> bool:
+    if not all(data):
+        return True
+    return False
 
 
 def determine_marker(
