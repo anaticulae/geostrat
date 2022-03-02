@@ -10,6 +10,7 @@
 ===============
 """
 
+import configo
 import texmex
 import utila
 
@@ -63,7 +64,7 @@ def parse(
         skip_overlapping=skip_overlapping,
         column_diff=column_diff,
     )
-    if unbalanced_columns(data):
+    if unbalanced_columns(data, navigator=navigator):
         utila.debug(f'unbalanced_columns: {navigator.page}')
         return None
     if skip_overlapping:
@@ -75,8 +76,19 @@ def parse(
     return data
 
 
-def unbalanced_columns(data) -> bool:
+NAVIGATOR_NO_IN_COLUMN_DATA = configo.HV_PERCENT_PLUS(default=92)
+
+
+def unbalanced_columns(data, navigator) -> bool:
     if not all(data):
+        return True
+    column_content = utila.flatten(data)
+    valid = utila.rect_max([item.bounding for item in column_content])
+    navigator_incolum = [
+        item for item in navigator if utila.rect_inside(valid, item.bounding)
+    ]
+    rate = utila.rate_rel(column_content, navigator_incolum)
+    if rate < NAVIGATOR_NO_IN_COLUMN_DATA:
         return True
     return False
 
