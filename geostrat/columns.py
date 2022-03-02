@@ -24,7 +24,7 @@ def parse(
 ) -> list:
     """Detect n-column_count columns and parse data.
 
-    Hints: Use a hight column_diff to join alternating text start together.
+    Hints: Use a high column_diff to join alternating text start together.
 
     Args:
         navigator(NavigatorMixin): current page
@@ -123,8 +123,10 @@ def column_data(
     skip_overlapping: bool,
     column_diff: float = 25.0,
 ):
-    """Filter items by x0 coordinate. Find items which are on a vertical
-    line."""
+    """Filter items by x0 coordinate.
+
+    Find items which are on a vertical line.
+    """
     result = []
     for item in page:
         if not utila.near(item.bounding[0], x0, column_diff):
