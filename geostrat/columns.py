@@ -80,16 +80,13 @@ def determine_marker(
 ) -> utila.Numbers:
     """Sort columns from left to right."""
     collected = [item.bounding[0] for item in page]  # x0 bounding
-
     clustered = utila.max_distance(
         collected,
         diff=column_diff,
         min_elements=min_elements,
     )
-
     if len(clustered) < column_count:
         return None
-
     result = [item[0] for item in clustered]
     result = sorted(result)
     return result
