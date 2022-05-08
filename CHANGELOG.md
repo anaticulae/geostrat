@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v1.4.0
+
+### Feature
+
+* skip extracted column which contains too few navigator data (6a4180f2d5aa)
+* skip unbalanced columns (b0f3f076411e)
+
+### Documentation
+
+* adjust modules path (4dfa2995765d)
+* Happy New Year! (d1fae203865f)
+
 ## v1.3.1
 
 ### Fix
