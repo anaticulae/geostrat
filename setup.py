@@ -31,7 +31,6 @@ if __name__ == "__main__":
         author='Helmut Konrad Fahrendholz',
         author_email='info@checkitweg.de',
         description='give me geo',
-        include_package_data=True,
         install_requires=REQUIRES,
         long_description=README,
         name='geostrat',
