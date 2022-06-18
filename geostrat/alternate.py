@@ -106,8 +106,7 @@ def parse_pages(pages, config: ParserConfig = None) -> list:
 
 
 def unite_hurenkind(pages: list) -> list:
-    """Unite group which does not start with title with title of the
-    page before.
+    """Unite group without title with tile of page before.
 
     Assume that title starts with left item. TODO: SUPPORT LEFT, RIGHT,
     MULTIPLE TITLE.
