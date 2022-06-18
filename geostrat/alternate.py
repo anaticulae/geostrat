@@ -142,11 +142,17 @@ def unite_hurenkind(pages: list) -> list:
     return result
 
 
-def before(page, right):
+def before(page: list, right: float) -> list:
+    """Try to find matching `hurenkind` with page before.
+
+    Use right one cause page after starts with feeded line:
+             ```orientierte Ansatz in der Medienpädagogik. Frankfurt a. Main: GEP.```
+    """
     result = []
     for item in page:
-        # TODO: WHY BOUNDING 0 x0? and not X1
-        matched = utila.near(item[0].bounding[0], right, diff=LINE_DIFF_MAX)
+        # use line start to find hurenkind to match to page before
+        x0 = item[0].bounding[0]
+        matched = utila.near(x0, right, diff=LINE_DIFF_MAX)
         if not matched:
             break
         result.append(item[0])
