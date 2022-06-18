@@ -211,7 +211,12 @@ def feeding_right(pages: list) -> float:
             continue
         for bib in page:
             for item in bib:
+                if not item.text.strip():
+                    # skip whitespace lines
+                    continue
                 feeding.append(item.bounding[0])
+    if not feeding:
+        return None
     _, right = min(feeding), max(feeding)
     return right
 
