@@ -178,15 +178,9 @@ def unite_hurenkind(pages: list) -> list:
     MULTIPLE TITLE.
     """
     if not pages:
-        return pages
-    feeding = []
-    for page in pages:
-        if not page:
-            continue
-        for bib in page:
-            for item in bib:
-                feeding.append(item.bounding[0])
-    _, right = min(feeding), max(feeding)
+        return []
+    if (right := feeding_right(pages)) is None:
+        return []
     result = [pages[0]]
     for page in pages[1:]:
         if not page:
@@ -206,6 +200,20 @@ def unite_hurenkind(pages: list) -> list:
             continue
         result.append(page)
     return result
+
+
+def feeding_right(pages: list) -> float:
+    if not pages:
+        return None
+    feeding = []
+    for page in pages:
+        if not page:
+            continue
+        for bib in page:
+            for item in bib:
+                feeding.append(item.bounding[0])
+    _, right = min(feeding), max(feeding)
+    return right
 
 
 def before(page: list, right: float) -> list:
