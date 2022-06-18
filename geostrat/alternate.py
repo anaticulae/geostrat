@@ -102,6 +102,7 @@ def parse_pages(pages, config: ParserConfig = None) -> list:
             parsed = parse_page(page, lining_points=linings, config=config)
         result.append(parsed)
     result = unite_hurenkind(result)
+    # TODO: EMPTY RESULT, USE EXCEPTION TO COMMUNICATE TO THE USER?
     return result
 
 
