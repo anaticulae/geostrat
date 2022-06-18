@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.4.1
+
+### Fix
+
+* do not fail on empty feeding (a5ef93b87581)
+
+### Documentation
+
+* clarify method documentation (a3bfe097ae8f)
+
 ## v1.4.0
 
 ### Feature
