@@ -105,6 +105,72 @@ def parse_pages(pages, config: ParserConfig = None) -> list:
     return result
 
 
+def parse_page(page, lining_points=None, config: ParserConfig = None) -> list:  # pylint:disable=R1260,R0912
+    """Iterate through lines in document.
+
+    A group is separated by an alternating text feed. We skip all
+    elements which are not part of most common feed or not part of most
+    common font size.
+
+    A group is closed when:
+
+        * the text feed is equal than first element in group
+        * an illegal text feed occurs
+        * an illegal font size
+
+    Hint: Keep in mind when extending to more than one group, that one
+    group can contain other groups.
+    """
+    if not page:
+        return None
+    starts = group_line_start(page) if lining_points is None else lining_points
+    if not starts:
+        raise NoSingleLiningPoints('could not find enough lining points')
+    if not config:
+        config = ParserConfig()
+    textsize = texmex.textsize_frompage(page)
+    result = []
+    current = None
+    for line in page:
+        x0 = line.bounding[0]
+        if not utila.near(textsize, line.style.textsize(), TEXT_DIFF_MAX):
+            # illegal font size
+            current = None
+            continue
+        if current is None:
+            if not inside(starts, x0):
+                # illegal line feed
+                # seek to start position or next valid item
+                continue
+            result.append([line])
+            current = x0
+        else:
+            if not inside(starts, x0):
+                # illegal line feed
+                current = None
+                continue
+            if utila.near(current, x0, diff=LINE_DIFF_MAX):
+                # alternating position
+                current = x0
+                result.append([line])
+                continue
+            if config.main_split:
+                # mainsplit: ensure to start with `Title Item`, see above.
+                # Ensure to handle `Hurenkind` correctly.
+                if utila.near(min(starts), x0, diff=LINE_DIFF_MAX):
+                    # page starts with hurenkind
+                    result.append([line])
+                    current = x0
+                else:
+                    result[-1].append(line)
+            else:
+                # member of group
+                result[-1].append(line)
+    # remove items with to few content
+    result = [item for item in result if valid_content(item, config)]
+    return result
+
+
 def unite_hurenkind(pages: list) -> list:
     """Unite group without title with tile of page before.
 
@@ -156,73 +222,6 @@ def before(page: list, right: float) -> list:
         if not matched:
             break
         result.append(item[0])
-    return result
-
-
-def parse_page(page, lining_points=None, config: ParserConfig = None) -> list:  # pylint:disable=R1260,R0912
-    """Iterate through lines in document.
-
-    A group is separated by an alternating text feed. We skip all
-    elements which are not part of most common feed or not part of most
-    common font size.
-
-    A group is closed when:
-
-        * the text feed is equal than first element in group
-        * an illegal text feed occurs
-        * an illegal font size
-
-    Hint: Keep in mind when extending to more than one group, that one
-    group can contain other groups.
-    """
-    if not page:
-        return None
-    starts = group_line_start(page) if lining_points is None else lining_points
-    if not starts:
-        raise NoSingleLiningPoints('could not find enough lining points')
-
-    if not config:
-        config = ParserConfig()
-    textsize = texmex.textsize_frompage(page)
-    result = []
-    current = None
-    for line in page:
-        x0 = line.bounding[0]
-        if not utila.near(textsize, line.style.textsize(), TEXT_DIFF_MAX):
-            # illegal font size
-            current = None
-            continue
-        if current is None:
-            if not inside(starts, x0):
-                # illegal line feed
-                # seek to start position or next valid item
-                continue
-            result.append([line])
-            current = x0
-        else:
-            if not inside(starts, x0):
-                # illegal line feed
-                current = None
-                continue
-            if utila.near(current, x0, diff=LINE_DIFF_MAX):
-                # alternating position
-                current = x0
-                result.append([line])
-                continue
-            if config.main_split:
-                # mainsplit: ensure to start with `Title Item`, see above.
-                # Ensure to handle `Hurenkind` correctly.
-                if utila.near(min(starts), x0, diff=LINE_DIFF_MAX):
-                    # page starts with hurenkind
-                    result.append([line])
-                    current = x0
-                else:
-                    result[-1].append(line)
-            else:
-                # member of group
-                result[-1].append(line)
-    # remove items with to few content
-    result = [item for item in result if valid_content(item, config)]
     return result
 
 
