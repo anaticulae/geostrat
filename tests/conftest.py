@@ -42,5 +42,9 @@ def extract(resources):
         resources,
         dest=destination,
         worker=WORKER,
-        groupme='--footer --content --pagenumbers',
+        groupme='--content',
+        headnote=True,
+        footnote=True,
+        pagenumber=True,
+        cleanup=True,
     )
