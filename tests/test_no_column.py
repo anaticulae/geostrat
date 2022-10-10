@@ -10,11 +10,13 @@
 import power
 import pytest
 import serializeraw
+import utilatest
 
 import geostrat
 
 
 @pytest.mark.parametrize('data_adjust', [True, False])
+@utilatest.requires(power.BOOK200_PDF)
 def test_no_book200(data_adjust):
     source = power.link(power.BOOK200_PDF)
     ptns = serializeraw.ptn_frompath(source)

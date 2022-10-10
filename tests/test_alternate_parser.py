@@ -44,38 +44,39 @@ def test_parse_master89_external_liningpoints():
     """
     pages = (79, 80)
     expected = (14, 1)
-    parsed = load_and_parse(pages, power.link(power.MASTER089_PDF))
+    parsed = load_and_parse(pages, power.MASTER089_PDF)
     for page_result, page_expected in zip(parsed, expected):
         assert len(page_result) == page_expected, str(page_result)
 
 
 def test_parse_master89_external_liningpoints_single():
     pages = 79
-    parsed = load_and_parse(pages, power.link(power.MASTER089_PDF))[0]
+    parsed = load_and_parse(pages, power.MASTER089_PDF)[0]
     assert len(parsed) == 14, str(parsed)
 
 
 def test_parse_bachelor56_page49_whitespace_error():
     pages = (49)
-    parsed = load_and_parse(pages, power.link(power.BACHELOR056_PDF))[0]
+    parsed = load_and_parse(pages, power.BACHELOR056_PDF)[0]
     assert len(parsed) == 8, str(parsed)
 
 
 def test_parse_bachelor56_page51_hurenkind_error():
     pages = (51)
-    parsed = load_and_parse(pages, power.link(power.BACHELOR056_PDF))[0]
+    parsed = load_and_parse(pages, power.BACHELOR056_PDF)[0]
     assert len(parsed) == 8, str(parsed)
 
 
 def test_parse_bachelor56_page5051_hurenkind_unite():
     pages = (50, 51)
-    parsed = load_and_parse(pages, power.link(power.BACHELOR056_PDF))
+    parsed = load_and_parse(pages, power.BACHELOR056_PDF)
     flat = utila.flatten(parsed)
     assert len(flat) == 15, str(parsed)
 
 
 def load_and_parse(pages, resources: str):
-    utilatest.fixture_requires(power.BACHELOR056_PDF)
+    utilatest.fixture_requires(resources)
+    resources = power.link(resources)
     navigators = serializeraw.ptn_frompath(
         resources,
         prefix='oneline',
