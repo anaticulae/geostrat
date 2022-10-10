@@ -9,6 +9,7 @@
 
 import genex
 import power
+import utilatest
 
 import geostrat
 
@@ -28,7 +29,7 @@ RESOURCES = [
     genex.todo(power.BACHELOR067_PDF, pages='63', rawmaker='--char_margin=1.1'),
 ]
 
-WORKER = 6
+WORKER = utilatest.worker_count(6, onci=len(RESOURCES))
 
 
 def pytest_sessionstart(session):  # pylint:disable=W0613
