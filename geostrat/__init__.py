@@ -22,7 +22,7 @@ from geostrat.double_column import columns as dc_columns
 from geostrat.double_column import parse_page as dc_parse_page
 from geostrat.double_column import split_bymarker
 
-__version__ = '1.4.1'
+__version__ = '1.4.2'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PACKAGE = 'geostrat'

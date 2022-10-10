@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v1.4.2 (2022-10-10)
+
+### Chore
+
+* adjust resource data generator (bd36ae9c54ed)
+* increase worker count on CI (8f737df2438f)
+* upgrade requirements.txt (c63b939da64a)
+* add Jenkinsfile (a31392102521)
+
 ## v1.4.1
 
 ### Fix
