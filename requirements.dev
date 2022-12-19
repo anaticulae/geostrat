@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utilatest==0.23.0
+utilatest==0.25.0
 
-power==2.14.2
-genex==0.35.5
-genref==1.3.8
+power==2.20.1
+genex==0.37.0
+genref==1.3.10
