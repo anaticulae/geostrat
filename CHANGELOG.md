@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.4.4 (2022-12-19)
+
+### Chore
+
+* upgrade requirements.txt (1559797c173e)
+* fix todo access (206d8821e300)
+
 ## v1.4.3 (2022-12-19)
 
 ### Chore
