@@ -89,6 +89,9 @@ def unbalanced_columns(data, navigator) -> bool:
     ]
     rate = utila.rate_rel(column_content, navigator_in_colum)
     if rate < NAVIGATOR_NOT_IN_COLUMN_DATA:
+        utila.debug(f'column_content: {column_content}, navigator_in_colum: '
+                    f'{len(navigator_in_colum)} rate: {rate} '
+                    f'page: {navigator.page}')
         return True
     return False
 
