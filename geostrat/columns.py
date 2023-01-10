@@ -85,13 +85,13 @@ def unbalanced_columns(data, ptn) -> bool:
         return True
     column_content = utila.flat(data)
     valid = utila.rect_max([item.bounding for item in column_content])
-    navigator_in_colum = [
+    navigator_in_column = [
         item for item in ptn if utila.rect_inside(valid, item.bounding)
     ]
-    rate = utila.rate_rel(column_content, navigator_in_colum)
+    rate = utila.rate_rel(column_content, navigator_in_column)
     if rate < NAVIGATOR_NOT_IN_COLUMN_DATA:
         utila.debug(f'column_content: {len(column_content)}, '
-                    f'navigator_in_colum: {len(navigator_in_colum)} '
+                    f'navigator_in_column: {len(navigator_in_column)} '
                     f'rate: {rate} page: {ptn.page}')
         return True
     return False
