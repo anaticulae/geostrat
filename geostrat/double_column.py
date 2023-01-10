@@ -148,7 +148,7 @@ def all_columns(items, vertical_diff: float = 6.0):
             # bottom line position: y1
             buckets[index].add(item.bounding[3])
     result = []
-    all_items = utila.flatten(items)
+    all_items = utila.flat(items)
     for item in all_items:
         # search for items which are placed in both columns. There are the
         # bases for grouping text in vertical direction. See example above:

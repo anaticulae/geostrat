@@ -31,7 +31,7 @@ Requirements
 - oneline_text
 - oneline_textpositions
 
--> OnelinePageTextNavigator
+-> OnelinePTN
 
 Example:
 
@@ -244,7 +244,7 @@ def external_lining_points(pages):
     # remove page without clear lining points
     starts = [item for item in starts if item is not None]
 
-    starts = utila.flatten(starts)
+    starts = utila.flat(starts)
     clustered = utila.max_distance(
         starts,
         diff=LINE_DIFF_MAX,

@@ -70,7 +70,7 @@ def test_parse_bachelor56_page51_hurenkind_error():
 def test_parse_bachelor56_page5051_hurenkind_unite():
     pages = (50, 51)
     parsed = load_and_parse(pages, power.BACHELOR056_PDF)
-    flat = utila.flatten(parsed)
+    flat = utila.flat(parsed)
     assert len(flat) == 15, str(parsed)
 
 

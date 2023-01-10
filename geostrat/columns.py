@@ -82,7 +82,7 @@ NAVIGATOR_NO_IN_COLUMN_DATA = configo.HV_PERCENT_PLUS(default=92)
 def unbalanced_columns(data, navigator) -> bool:
     if not all(data):
         return True
-    column_content = utila.flatten(data)
+    column_content = utila.flat(data)
     valid = utila.rect_max([item.bounding for item in column_content])
     navigator_incolum = [
         item for item in navigator if utila.rect_inside(valid, item.bounding)
