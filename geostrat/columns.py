@@ -65,7 +65,7 @@ def parse(
         column_diff=column_diff,
     )
     if unbalanced_columns(data, navigator=navigator):
-        utila.debug(f'unbalanced_columns: {navigator.page}')
+        utila.debug(f'unbalanced_columns, page: {navigator.page}')
         return None
     if skip_overlapping:
         if any(item is None for item in data):  # None is important here
