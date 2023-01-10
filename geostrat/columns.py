@@ -76,7 +76,7 @@ def parse(
     return data
 
 
-NAVIGATOR_NO_IN_COLUMN_DATA = configo.HV_PERCENT_PLUS(default=92)
+NAVIGATOR_NOT_IN_COLUMN_DATA = configo.HV_PERCENT_PLUS(default=92)
 
 
 def unbalanced_columns(data, navigator) -> bool:
@@ -88,7 +88,7 @@ def unbalanced_columns(data, navigator) -> bool:
         item for item in navigator if utila.rect_inside(valid, item.bounding)
     ]
     rate = utila.rate_rel(column_content, navigator_in_colum)
-    if rate < NAVIGATOR_NO_IN_COLUMN_DATA:
+    if rate < NAVIGATOR_NOT_IN_COLUMN_DATA:
         return True
     return False
 
