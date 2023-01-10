@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v1.4.5 (2023-01-10)
+
+### Documentation
+
+* happy New Year! (6177fcb9046e)
+
+### Chore
+
+* use new pre-release (a85c742663f5)
+* upgrade requirements.txt (1f9befa9529b)
+* use quick install (ff270d8f436b)
+* upgrade Jenkinsfile (885279b8b141)
+* upgrade pipe library (19f0c99ce978)
+
 ## v1.4.4 (2022-12-19)
 
 ### Chore
