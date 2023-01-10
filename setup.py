@@ -10,7 +10,7 @@
 
 import utila
 
-PACKAGES=[
+PACKAGES = [
     'geostrat',
 ]
 

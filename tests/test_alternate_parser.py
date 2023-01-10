@@ -83,8 +83,8 @@ def load_and_parse(pages, resources: str):
         pages=pages,
     )
     config = geostrat.ParserConfig(
-        min_content_length=10,
-        min_word_count=4,
+        content_length_min=10,
+        word_count_min=4,
     )
     parsed = geostrat.al_parse_pages(navigators, config=config)
     return parsed

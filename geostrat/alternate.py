@@ -77,8 +77,8 @@ TEXT_DIFF_MAX = configo.HV_FLOAT_PLUS(default=2.5)
 
 @dataclasses.dataclass
 class ParserConfig:
-    min_word_count: int = 1
-    min_content_length: int = 1
+    word_count_min: int = 1
+    content_length_min: int = 1
     main_split: bool = True
 
 
@@ -262,9 +262,9 @@ def valid_content(item, config):
         item,
         normalize_newline=False,
     )
-    if len(item) < config.min_content_length:
+    if len(item) < config.content_length_min:
         return False
-    if len(item.split()) < config.min_word_count:
+    if len(item.split()) < config.word_count_min:
         return False
     return True
 
