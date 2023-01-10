@@ -15,8 +15,9 @@ import texmex
 import utila
 
 
+@utila.rename(navigator='ptn')
 def parse(
-    navigator: texmex.NavigatorMixin,
+    ptn: texmex.NavigatorMixin,
     column_count: int = 2,
     column_elements_min: int = 10,
     column_diff: float = 25.0,
@@ -28,7 +29,7 @@ def parse(
     Hints: Use a high column_diff to join alternating text start together.
 
     Args:
-        navigator(NavigatorMixin): current page
+        ptn(NavigatorMixin): current page
         column_count(int): number of columns
         column_elements_min(int): minimal count of data in every column
         column_diff(float): max x0 diff to fit in the same column
@@ -39,14 +40,14 @@ def parse(
         list of columns with data
         None if extraction fails
     """
-    if not navigator:
+    if not ptn:
         # empty navigator
         return None
     assert column_count >= 1, str(column_count)
-    assert (navigator.width / column_count) >= (2 * column_diff), (
-        f'{(navigator.width / column_count)} >= {(2 * column_diff)}')
+    assert (ptn.width / column_count) >= (2 * column_diff), (
+        f'{(ptn.width / column_count)} >= {(2 * column_diff)}')
     marker = determine_marker(
-        navigator,
+        ptn,
         column_count=column_count,
         min_elements=column_elements_min,
         column_diff=column_diff,
@@ -55,17 +56,17 @@ def parse(
         return None
     if len(marker) != column_count:
         utila.debug(f'invalid marker count; expected: {column_count} '
-                    f'current: {len(marker)} page: {navigator.page}')
+                    f'current: {len(marker)} page: {ptn.page}')
         utila.debug('skip column extraction')
         return None
     data = split_bymarker(
-        navigator,
+        ptn,
         marker,
         skip_overlapping=skip_overlapping,
         column_diff=column_diff,
     )
-    if unbalanced_columns(data, navigator=navigator):
-        utila.debug(f'unbalanced_columns, page: {navigator.page}')
+    if unbalanced_columns(data, ptn=ptn):
+        utila.debug(f'unbalanced_columns, page: {ptn.page}')
         return None
     if skip_overlapping:
         if any(item is None for item in data):  # None is important here
@@ -79,19 +80,19 @@ def parse(
 NAVIGATOR_NOT_IN_COLUMN_DATA = configo.HV_PERCENT_PLUS(default=92)
 
 
-def unbalanced_columns(data, navigator) -> bool:
+def unbalanced_columns(data, ptn) -> bool:
     if not all(data):
         return True
     column_content = utila.flat(data)
     valid = utila.rect_max([item.bounding for item in column_content])
     navigator_in_colum = [
-        item for item in navigator if utila.rect_inside(valid, item.bounding)
+        item for item in ptn if utila.rect_inside(valid, item.bounding)
     ]
     rate = utila.rate_rel(column_content, navigator_in_colum)
     if rate < NAVIGATOR_NOT_IN_COLUMN_DATA:
-        utila.debug(f'column_content: {column_content}, navigator_in_colum: '
-                    f'{len(navigator_in_colum)} rate: {rate} '
-                    f'page: {navigator.page}')
+        utila.debug(f'column_content: {len(column_content)}, '
+                    f'navigator_in_colum: {len(navigator_in_colum)} '
+                    f'rate: {rate} page: {ptn.page}')
         return True
     return False
 
