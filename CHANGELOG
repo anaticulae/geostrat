@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.5.1 (2026-05-25)
+
+### Testing
+
+- **linter**: Solve linter warnings
+  ([`cd1058d`](https://github.com/anaticulae/geostrat/commit/cd1058da21f0819e2ffc658e68ae077a359a71c3))
+
+
 ## v1.5.0 (2026-05-25)
 
 ### Bug Fixes
