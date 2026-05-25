@@ -38,6 +38,8 @@ dev = [
     "utilotest>=1.0.1,<2.0.0",
     "hoverpower==1.2.0",
     "gennex==1.0.3",
+    "rawmaker==2.40.3",
+    "pagenumber==1.0.0",
 ]
 
 [project.urls]
