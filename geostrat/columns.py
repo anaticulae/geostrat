@@ -10,12 +10,12 @@
 ===============
 """
 
-import configo
+import configos
 import texmex
-import utila
+import utilo
 
 
-@utila.rename(navigator='ptn')
+@utilo.rename(navigator='ptn')
 def parse(
     ptn: texmex.NavigatorMixin,
     column_count: int = 2,
@@ -55,9 +55,9 @@ def parse(
     if not marker:
         return None
     if len(marker) != column_count:
-        utila.debug(f'invalid marker count; expected: {column_count} '
+        utilo.debug(f'invalid marker count; expected: {column_count} '
                     f'current: {len(marker)} page: {ptn.page}')
-        utila.debug('skip column extraction')
+        utilo.debug('skip column extraction')
         return None
     data = split_bymarker(
         ptn,
@@ -66,31 +66,31 @@ def parse(
         column_diff=column_diff,
     )
     if unbalanced_columns(data, ptn=ptn):
-        utila.debug(f'unbalanced_columns, page: {ptn.page}')
+        utilo.debug(f'unbalanced_columns, page: {ptn.page}')
         return None
     if skip_overlapping:
         if any(item is None for item in data):  # None is important here
-            utila.debug('could not analyze, columns are mixed/ambigous')
+            utilo.debug('could not analyze, columns are mixed/ambigous')
             return None
     if data_adjust:
         data = adjust_data(data)
     return data
 
 
-NAVIGATOR_NOT_IN_COLUMN_DATA = configo.HV_PERCENT_PLUS(default=92)
+NAVIGATOR_NOT_IN_COLUMN_DATA = configos.HV_PERCENT_PLUS(default=92)
 
 
 def unbalanced_columns(data, ptn) -> bool:
     if not all(data):
         return True
-    column_content = utila.flat(data)
-    valid = utila.rect_max([item.bounding for item in column_content])
+    column_content = utilo.flat(data)
+    valid = utilo.rect_max([item.bounding for item in column_content])
     navigator_in_column = [
-        item for item in ptn if utila.rect_inside(valid, item.bounding)
+        item for item in ptn if utilo.rect_inside(valid, item.bounding)
     ]
-    rate = utila.rate_rel(column_content, navigator_in_column)
+    rate = utilo.rate_rel(column_content, navigator_in_column)
     if rate < NAVIGATOR_NOT_IN_COLUMN_DATA:
-        utila.debug(f'column_content: {len(column_content)}, '
+        utilo.debug(f'column_content: {len(column_content)}, '
                     f'navigator_in_column: {len(navigator_in_column)} '
                     f'rate: {rate} page: {ptn.page}')
         return True
@@ -102,10 +102,10 @@ def determine_marker(
     column_count: int,
     min_elements: int,
     column_diff: float,
-) -> utila.Numbers:
+) -> utilo.Numbers:
     """Sort columns from left to right."""
     collected = [item.bounding[0] for item in page]  # x0 bounding
-    clustered = utila.max_distance(
+    clustered = utilo.max_distance(
         collected,
         diff=column_diff,
         min_elements=min_elements,
@@ -119,7 +119,7 @@ def determine_marker(
 
 def split_bymarker(page, markers, skip_overlapping: bool, column_diff: float):
     assert markers
-    markers = markers + [utila.INF]
+    markers = markers + [utilo.INF]
     data = [
         column_data(
             page,
@@ -145,7 +145,7 @@ def column_data(
     """
     result = []
     for item in page:
-        if not utila.near(item.bounding[0], x0, column_diff):
+        if not utilo.near(item.bounding[0], x0, column_diff):
             continue
         if item.bounding[2] > x1:
             # right border outranges column
@@ -164,13 +164,13 @@ def adjust_data(data, column=0) -> list:
                for current, after in zip(adjustment[:-1], adjustment[1:])]
     if len(borders) <= 1:
         return []
-    borders.append((borders[-1][1], utila.INF))
+    borders.append((borders[-1][1], utilo.INF))
     result = []
     for border in borders:
         line = []
         for col in data:
             content = [
-                item for item in col if utila.isinside(
+                item for item in col if utilo.isinside(
                     value=(item.bounding[1] + item.bounding[3]) / 2,
                     left=border[0],
                     right=border[1],

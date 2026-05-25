@@ -19,27 +19,27 @@ Example:
                         Vorlesungsskript SS2010, Hochschule Ulm (2010)
 """
 
-import configo
+import configos
 import texmex
-import utila
+import utilo
 
-ADJUST_COLUMNS_TOLERENACE = configo.HV_FLOAT_PLUS(default=5.0)
+ADJUST_COLUMNS_TOLERENACE = configos.HV_FLOAT_PLUS(default=5.0)
 
-COLUMNS_DIFF_MAX = configo.HV_FLOAT_PLUS(default=2.0)
+COLUMNS_DIFF_MAX = configos.HV_FLOAT_PLUS(default=2.0)
 
-COLUMNS_ELEMENTS_MIN = configo.HV_INT_PLUS(default=5)
+COLUMNS_ELEMENTS_MIN = configos.HV_INT_PLUS(default=5)
 
-LINE_GAP_MIN = configo.HV_FLOAT_PLUS(default=10.0)
+LINE_GAP_MIN = configos.HV_FLOAT_PLUS(default=10.0)
 
-LINES_DIFF_MAX = configo.HV_FLOAT_PLUS(default=2.0)
+LINES_DIFF_MAX = configos.HV_FLOAT_PLUS(default=2.0)
 
-LINES_ELEMENTS_MIN = configo.HV_INT_PLUS(default=5)
+LINES_ELEMENTS_MIN = configos.HV_INT_PLUS(default=5)
 
 
 def parse_page(page) -> list:
     line_gaps = lines(page)
     if not line_gaps:
-        utila.debug('no line gaps; skip strategy')
+        utilo.debug('no line gaps; skip strategy')
         return None
     marker = columns(page)
     if not marker:
@@ -49,13 +49,13 @@ def parse_page(page) -> list:
         marker,
     )
     if not short_column or not description_column:
-        utila.debug('no short or long column; skip strategy')
+        utilo.debug('no short or long column; skip strategy')
         return None
     overlapping = overlapping_column(short_column, description_column)
     if overlapping:
         # TODO: EXTEND ERROR MESSAGE
-        utila.debug(overlapping)
-        utila.debug('could not analyze, columns are mixed/ambigous')
+        utilo.debug(overlapping)
+        utilo.debug('could not analyze, columns are mixed/ambigous')
         return None
     adjusted = adjust_columns(
         short_column,
@@ -111,7 +111,7 @@ def adjust_columns(short_column, description_column, short_marker):
     inside_all = all_columns([short_column, description_column])
     left = [
         item for item in inside_all
-        if utila.near(item.bounding[0], short_marker)
+        if utilo.near(item.bounding[0], short_marker)
     ]
     if len(left) <= 1:
         # require at least two elements to determine height of area
@@ -148,7 +148,7 @@ def all_columns(items, vertical_diff: float = 6.0):
             # bottom line position: y1
             buckets[index].add(item.bounding[3])
     result = []
-    all_items = utila.flat(items)
+    all_items = utilo.flat(items)
     for item in all_items:
         # search for items which are placed in both columns. There are the
         # bases for grouping text in vertical direction. See example above:
@@ -157,7 +157,7 @@ def all_columns(items, vertical_diff: float = 6.0):
         inside = [
             # any match in a column
             any(
-                utila.near(
+                utilo.near(
                     # bottom line position: y1
                     item.bounding[3],
                     ypos,
@@ -181,19 +181,19 @@ def column_data(page, x0, diff: float = 60.0):
     line."""
     result = []
     for item in page:
-        if not utila.near(item.bounding[0], x0, diff):
+        if not utilo.near(item.bounding[0], x0, diff):
             continue
         result.append(item)
     return result
 
 
-def columns(page) -> utila.Numbers:
+def columns(page) -> utilo.Numbers:
     """Sort columns from left to right."""
     collected = []
     for item in page:
         x0 = item.bounding[0]
         collected.append(x0)
-    clustered = utila.max_distance(
+    clustered = utilo.max_distance(
         collected,
         diff=COLUMNS_DIFF_MAX,
         min_elements=COLUMNS_ELEMENTS_MIN,
@@ -205,9 +205,9 @@ def columns(page) -> utila.Numbers:
     return result
 
 
-def lines(page) -> utila.Numbers:
+def lines(page) -> utilo.Numbers:
     line_distance = texmex.linedistances(page, noneatend=False)
-    clustered = utila.max_distance(
+    clustered = utilo.max_distance(
         line_distance,
         diff=LINES_DIFF_MAX,
         min_elements=LINES_ELEMENTS_MIN,

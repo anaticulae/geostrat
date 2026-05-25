@@ -64,15 +64,15 @@ Title/Content Item
 
 import dataclasses
 
-import configo
+import configos
 import texmex
-import utila
+import utilo
 
-LINE_ELEMENT_MIN = configo.HV_INT_PLUS(default=2)
+LINE_ELEMENT_MIN = configos.HV_INT_PLUS(default=2)
 
-LINE_DIFF_MAX = configo.HV_FLOAT_PLUS(default=10.0)
+LINE_DIFF_MAX = configos.HV_FLOAT_PLUS(default=10.0)
 
-TEXT_DIFF_MAX = configo.HV_FLOAT_PLUS(default=2.5)
+TEXT_DIFF_MAX = configos.HV_FLOAT_PLUS(default=2.5)
 
 
 @dataclasses.dataclass
@@ -134,7 +134,7 @@ def parse_page(page, lining_points=None, config: ParserConfig = None) -> list:  
     current = None
     for line in page:
         x0 = line.bounding[0]
-        if not utila.near(textsize, line.style.textsize(), TEXT_DIFF_MAX):
+        if not utilo.near(textsize, line.style.textsize(), TEXT_DIFF_MAX):
             # illegal font size
             current = None
             continue
@@ -150,7 +150,7 @@ def parse_page(page, lining_points=None, config: ParserConfig = None) -> list:  
                 # illegal line feed
                 current = None
                 continue
-            if utila.near(current, x0, diff=LINE_DIFF_MAX):
+            if utilo.near(current, x0, diff=LINE_DIFF_MAX):
                 # alternating position
                 current = x0
                 result.append([line])
@@ -158,7 +158,7 @@ def parse_page(page, lining_points=None, config: ParserConfig = None) -> list:  
             if config.main_split:
                 # mainsplit: ensure to start with `Title Item`, see above.
                 # Ensure to handle `Hurenkind` correctly.
-                if utila.near(min(starts), x0, diff=LINE_DIFF_MAX):
+                if utilo.near(min(starts), x0, diff=LINE_DIFF_MAX):
                     # page starts with hurenkind
                     result.append([line])
                     current = x0
@@ -232,7 +232,7 @@ def before(page: list, right: float) -> list:
     for item in page:
         # use line start to find hurenkind to match to page before
         x0 = item[0].bounding[0]
-        matched = utila.near(x0, right, diff=LINE_DIFF_MAX)
+        matched = utilo.near(x0, right, diff=LINE_DIFF_MAX)
         if not matched:
             break
         result.append(item[0])
@@ -244,8 +244,8 @@ def external_lining_points(pages):
     # remove page without clear lining points
     starts = [item for item in starts if item is not None]
 
-    starts = utila.flat(starts)
-    clustered = utila.max_distance(
+    starts = utilo.flat(starts)
+    clustered = utilo.max_distance(
         starts,
         diff=LINE_DIFF_MAX,
         min_elements=1,
@@ -270,12 +270,12 @@ def valid_content(item, config):
 
 
 def inside(starts, value):
-    return any((utila.near(item, value, LINE_DIFF_MAX) for item in starts))
+    return any((utilo.near(item, value, LINE_DIFF_MAX) for item in starts))
 
 
 def group_line_start(page):
     x0_pos = [item.bounding[0] for item in page]
-    clusters = utila.max_distance(
+    clusters = utilo.max_distance(
         x0_pos,
         diff=LINE_DIFF_MAX,
         min_elements=LINE_ELEMENT_MIN,

@@ -7,20 +7,20 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import serializeraw
-import utilatest
+import utilotest
 
 import geostrat
 import geostrat.double_column
 
 
-@utilatest.requires(power.BACHELOR063_PDF)
+@utilotest.requires(hoverpower.BACHELOR063_PDF)
 def test_parse_column_bachelor63_page59():
     """Latex double column. Left side with [Hem10] pattern"""
     pages = (59)
     navigators = serializeraw.ptn_frompath(
-        power.link(power.BACHELOR063_PDF),
+        hoverpower.link(hoverpower.BACHELOR063_PDF),
         # fill_empty=False,
         pages=pages,
     )
@@ -28,12 +28,12 @@ def test_parse_column_bachelor63_page59():
     assert len(parsed) == 12, str(parsed)
 
 
-@utilatest.requires(power.BACHELOR063_PDF)
+@utilotest.requires(hoverpower.BACHELOR063_PDF)
 def test_parse_column_bachelor63_page59_all_columns():
     """Latex double column. Left side with [Hem10] pattern"""
     pages = (59,)
     navigators = serializeraw.ptn_frompath(
-        power.link(power.BACHELOR063_PDF),
+        hoverpower.link(hoverpower.BACHELOR063_PDF),
         # fill_empty=False,
         pages=pages,
     )
@@ -49,9 +49,9 @@ def test_parse_column_bachelor63_page59_all_columns():
     assert '[Ohm91]' in text, text
 
 
-@utilatest.requires(power.BACHELOR037_PDF)
+@utilotest.requires(hoverpower.BACHELOR037_PDF)
 def test_extract_columns_bachelor37page33():
-    source = power.link(power.BACHELOR037_PDF)
+    source = hoverpower.link(hoverpower.BACHELOR037_PDF)
     ptn = serializeraw.ptn_frompath(source, pages=(33,))
     ptn = ptn[0]
     parsed = geostrat.parse(ptn)
@@ -59,9 +59,9 @@ def test_extract_columns_bachelor37page33():
     assert len(parsed) == 2
 
 
-@utilatest.requires(power.BACHELOR037_PDF)
+@utilotest.requires(hoverpower.BACHELOR037_PDF)
 def test_extract_columns_bachelor37page2():
-    source = power.link(power.BACHELOR037_PDF)
+    source = hoverpower.link(hoverpower.BACHELOR037_PDF)
     ptn = serializeraw.ptn_frompath(source, pages=(2,))[0]
     parsed = geostrat.parse(ptn)
     # parse two columns
@@ -70,9 +70,9 @@ def test_extract_columns_bachelor37page2():
     assert len(parsed[1]) == 20, str(parsed[1])
 
 
-@utilatest.requires(power.BACHELOR037_PDF)
+@utilotest.requires(hoverpower.BACHELOR037_PDF)
 def test_extract_columns_bachelor37complete():
-    source = power.link(power.BACHELOR037_PDF)
+    source = hoverpower.link(hoverpower.BACHELOR037_PDF)
     ptns = serializeraw.ptn_frompath(source)
     doubled = [page.page for page in ptns if geostrat.parse(page)]
     # it is possible that more than required pages can be inside
@@ -80,9 +80,9 @@ def test_extract_columns_bachelor37complete():
     assert all(inside), str(inside)
 
 
-@utilatest.requires(power.BACHELOR037_PDF)
+@utilotest.requires(hoverpower.BACHELOR037_PDF)
 def test_geometry_all_columns_bachelor37page2():
-    source = power.link(power.BACHELOR037_PDF)
+    source = hoverpower.link(hoverpower.BACHELOR037_PDF)
     ptn = serializeraw.ptn_frompath(source, pages=(2,))[0]
     columns = [
         geostrat.double_column.column_data(ptn, x0=item)

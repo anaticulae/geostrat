@@ -7,26 +7,26 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import serializeraw
-import utilatest
+import utilotest
 
 import geostrat
 
 
 def paper18_page(page: int):
-    utilatest.fixture_requires(power.PAPER18_PDF)
+    utilotest.fixture_requires(hoverpower.PAPER18_PDF)
     navigators = serializeraw.ptn_frompath(
-        power.link(power.PAPER18_PDF),
+        hoverpower.link(hoverpower.PAPER18_PDF),
         pages=(page,),
     )
     return navigators[0]
 
 
 def bachelor67(page: int):
-    utilatest.fixture_requires(power.BACHELOR067_PDF)
+    utilotest.fixture_requires(hoverpower.BACHELOR067_PDF)
     navigators = serializeraw.ptn_frompath(
-        power.link(power.BACHELOR067_PDF),
+        hoverpower.link(hoverpower.BACHELOR067_PDF),
         pages=(page,),
     )
     return navigators[0]

@@ -7,11 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import geostrat
 
@@ -22,11 +22,11 @@ import geostrat
     (99, 15),
     (100, 3),
 ])
-@utilatest.longrun
-@utilatest.requires(power.MASTER116_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.MASTER116_PDF)
 def test_parse_master116_page(page, expected):
     navigators = serializeraw.ptn_frompath(
-        power.link(power.MASTER116_PDF),
+        hoverpower.link(hoverpower.MASTER116_PDF),
         prefix='oneline',
         pages=page,
     )
@@ -34,8 +34,8 @@ def test_parse_master116_page(page, expected):
     assert len(parsed) == expected, str(parsed)
 
 
-@utilatest.longrun
-@utilatest.requires(power.MASTER089_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.MASTER089_PDF)
 def test_parse_master89_external_liningpoints():
     """Page 80 has to few content items to determine the lining points.
 
@@ -44,39 +44,39 @@ def test_parse_master89_external_liningpoints():
     """
     pages = (79, 80)
     expected = (14, 1)
-    parsed = load_and_parse(pages, power.MASTER089_PDF)
+    parsed = load_and_parse(pages, hoverpower.MASTER089_PDF)
     for page_result, page_expected in zip(parsed, expected):
         assert len(page_result) == page_expected, str(page_result)
 
 
 def test_parse_master89_external_liningpoints_single():
     pages = 79
-    parsed = load_and_parse(pages, power.MASTER089_PDF)[0]
+    parsed = load_and_parse(pages, hoverpower.MASTER089_PDF)[0]
     assert len(parsed) == 14, str(parsed)
 
 
 def test_parse_bachelor56_page49_whitespace_error():
     pages = (49)
-    parsed = load_and_parse(pages, power.BACHELOR056_PDF)[0]
+    parsed = load_and_parse(pages, hoverpower.BACHELOR056_PDF)[0]
     assert len(parsed) == 8, str(parsed)
 
 
 def test_parse_bachelor56_page51_hurenkind_error():
     pages = (51)
-    parsed = load_and_parse(pages, power.BACHELOR056_PDF)[0]
+    parsed = load_and_parse(pages, hoverpower.BACHELOR056_PDF)[0]
     assert len(parsed) == 8, str(parsed)
 
 
 def test_parse_bachelor56_page5051_hurenkind_unite():
     pages = (50, 51)
-    parsed = load_and_parse(pages, power.BACHELOR056_PDF)
-    flat = utila.flat(parsed)
+    parsed = load_and_parse(pages, hoverpower.BACHELOR056_PDF)
+    flat = utilo.flat(parsed)
     assert len(flat) == 15, str(parsed)
 
 
 def load_and_parse(pages, resources: str):
-    utilatest.fixture_requires(resources)
-    resources = power.link(resources)
+    utilotest.fixture_requires(resources)
+    resources = hoverpower.link(resources)
     navigators = serializeraw.ptn_frompath(
         resources,
         prefix='oneline',

@@ -7,18 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
 import serializeraw
-import utilatest
+import utilotest
 
 import geostrat
 
 
 @pytest.mark.parametrize('data_adjust', [True, False])
-@utilatest.requires(power.BOOK200_PDF)
+@utilotest.requires(hoverpower.BOOK200_PDF)
 def test_no_book200(data_adjust):
-    source = power.link(power.BOOK200_PDF)
+    source = hoverpower.link(hoverpower.BOOK200_PDF)
     ptns = serializeraw.ptn_frompath(source)
     for navigator in ptns:
         parsed = geostrat.parse(
