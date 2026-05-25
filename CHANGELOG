@@ -1,162 +1,550 @@
-# Changelog
+# CHANGELOG
 
-Every noteable change is logged here.
+
+## v1.5.0 (2026-05-25)
+
+### Bug Fixes
+
+- **columns**: Clarify debug message
+  ([`33a769f`](https://github.com/anaticulae/geostrat/commit/33a769f7d667befae7e0a9f5da92fa46de74dd2e))
+
+### Chores
+
+- **github**: Add .github
+  ([`c4d1291`](https://github.com/anaticulae/geostrat/commit/c4d129155b7954c3c70ddab88f43d6ae347259bf))
+
+- **hoverpower**: Shrink power download
+  ([`cb551dd`](https://github.com/anaticulae/geostrat/commit/cb551dd0a6d5fba8a802ec3c330190980ea1287b))
+
+- **project**: Add missing import
+  ([`df15948`](https://github.com/anaticulae/geostrat/commit/df159488bf48f07b4f2f63b746bdd2bd3b43eaa3))
+
+- **project**: Add modern project setup
+  ([`14fa394`](https://github.com/anaticulae/geostrat/commit/14fa394eafb6febbcab6580edbd64dc6205f904d))
+
+### Code Style
+
+- **fix**: Fix spelling error
+  ([`8a5e1cd`](https://github.com/anaticulae/geostrat/commit/8a5e1cd754a9b39258b463a3d69045b0729152fb))
+
+### Features
+
+- **columns**: Increase debug data
+  ([`2195e75`](https://github.com/anaticulae/geostrat/commit/2195e75b8e0fd58b17b02bfa21c628fee7f1d2be))
+
+### Refactoring
+
+- **columns**: Clarify holy value
+  ([`7d3760a`](https://github.com/anaticulae/geostrat/commit/7d3760ac1a9d6310b7b2be2a7f05e91701a96c00))
+
+- **columns**: Improve naming
+  ([`e3b32a2`](https://github.com/anaticulae/geostrat/commit/e3b32a284c25db71a78322cf1873ce8cff79f6ac))
+
+- **columns**: Shorten naming
+  ([`044e7d4`](https://github.com/anaticulae/geostrat/commit/044e7d4d05b4dab4663123fded7bdbef057b14ea))
+
+- **packages**: Adjust package names
+  ([`e227273`](https://github.com/anaticulae/geostrat/commit/e227273ec6252a956dc946a8316639a451792db2))
+
+- **rename**: Improve naming
+  ([`6cea6df`](https://github.com/anaticulae/geostrat/commit/6cea6dfc6445f7d26dc9293dfa5675332a12c6a3))
+
+- **replace**: Automated replacement
+  ([`7a480e2`](https://github.com/anaticulae/geostrat/commit/7a480e2a2cd5b65a03b194c073d20bf8be4b5b3b))
+
 
 ## v1.4.5 (2023-01-10)
 
+### Chores
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`885279b`](https://github.com/anaticulae/geostrat/commit/885279b8b141d6ae28829b600f6d2b1d2b8dea86))
+
+- **Jenkins**: Upgrade pipe library
+  ([`19f0c99`](https://github.com/anaticulae/geostrat/commit/19f0c99ce978a4657d145c9af27ae5c41e9f3439))
+
+- **Jenkins**: Use new pre-release
+  ([`a85c742`](https://github.com/anaticulae/geostrat/commit/a85c742663f5c52ddea1ed258362289f824bc97d))
+
+- **requirements**: Upgrade requirements.txt
+  ([`1f9befa`](https://github.com/anaticulae/geostrat/commit/1f9befa9529b5dde4287d54d5a2871520ab1e156))
+
+- **setup**: Use quick install
+  ([`ff270d8`](https://github.com/anaticulae/geostrat/commit/ff270d8f436bdcdf13b205d9dca2fc8e3e5c4793))
+
 ### Documentation
 
-* happy New Year! (6177fcb9046e)
+- **copyright**: Happy New Year!
+  ([`6177fcb`](https://github.com/anaticulae/geostrat/commit/6177fcb9046eed241eb53d6f448d0efc6a55cd40))
 
-### Chore
-
-* use new pre-release (a85c742663f5)
-* upgrade requirements.txt (1f9befa9529b)
-* use quick install (ff270d8f436b)
-* upgrade Jenkinsfile (885279b8b141)
-* upgrade pipe library (19f0c99ce978)
 
 ## v1.4.4 (2022-12-19)
 
-### Chore
+### Chores
 
-* upgrade requirements.txt (1559797c173e)
-* fix todo access (206d8821e300)
+- **conftest**: Fix todo access
+  ([`206d882`](https://github.com/anaticulae/geostrat/commit/206d8821e3005384082795cf52e550c18602e3ab))
+
+- **requirements**: Upgrade requirements.txt
+  ([`1559797`](https://github.com/anaticulae/geostrat/commit/1559797c173e3d7693e11a2f56d99ec25f87d6e7))
+
 
 ## v1.4.3 (2022-12-19)
 
-### Chore
+### Chores
 
-* upgrade requirements.txt (af17b612de0a)
-* upgrade pipeline (c6b5847abc1e)
+- **Jenkins**: Upgrade pipeline
+  ([`c6b5847`](https://github.com/anaticulae/geostrat/commit/c6b5847abc1e072d085a1bc581bb4e78aff8190e))
+
+- **requirements**: Upgrade requirements.txt
+  ([`af17b61`](https://github.com/anaticulae/geostrat/commit/af17b612de0a9477715147ccb6c9d1bd73a5eee3))
+
 
 ## v1.4.2 (2022-10-10)
 
-### Chore
+### Chores
 
-* adjust resource data generator (bd36ae9c54ed)
-* increase worker count on CI (8f737df2438f)
-* upgrade requirements.txt (c63b939da64a)
-* add Jenkinsfile (a31392102521)
+- **ci**: Add Jenkinsfile
+  ([`a313921`](https://github.com/anaticulae/geostrat/commit/a313921025218ac4b188ff555e44fd1c53a7e560))
 
-## v1.4.1
+- **requirements**: Upgrade requirements.txt
+  ([`c63b939`](https://github.com/anaticulae/geostrat/commit/c63b939da64a20284b16ddd76cb6485bd1103445))
 
-### Fix
+- **resources**: Adjust resource data generator
+  ([`bd36ae9`](https://github.com/anaticulae/geostrat/commit/bd36ae9c54edfe15be90228bb4f1b2907d8e3f11))
 
-* do not fail on empty feeding (a5ef93b87581)
+- **test**: Increase worker count on CI
+  ([`8f737df`](https://github.com/anaticulae/geostrat/commit/8f737df2438fb7ad9297ccc8fc35f46fd69a4ea7))
 
-### Documentation
+### Code Style
 
-* clarify method documentation (a3bfe097ae8f)
+- **changelog**: Adjust for automation tool
+  ([`b89c140`](https://github.com/anaticulae/geostrat/commit/b89c1403543c12678465470c50589be707c30b50))
 
-## v1.4.0
+### Testing
 
-### Feature
+- **refactor**: Remove default values
+  ([`1a1651c`](https://github.com/anaticulae/geostrat/commit/1a1651cdfce88342a75308c58723d3527931345c))
 
-* skip extracted column which contains too few navigator data (6a4180f2d5aa)
-* skip unbalanced columns (b0f3f076411e)
+- **skip**: Skip non generated tests
+  ([`2c1c92d`](https://github.com/anaticulae/geostrat/commit/2c1c92d385153f96507ad9673315deac10032e35))
 
-### Documentation
 
-* adjust modules path (4dfa2995765d)
-* Happy New Year! (d1fae203865f)
+## v1.4.1 (2022-06-18)
 
-## v1.3.1
+### Bug Fixes
 
-### Fix
+- **alternate**: Do not fail on empty feeding
+  ([`a5ef93b`](https://github.com/anaticulae/geostrat/commit/a5ef93b87581d693e9413b0bd4d68c9c6ff463c2))
 
-* skip empty data selector (ccfe3543f1e5)
+### Chores
 
-## v1.3.0
+- **requirements**: Upgrade requirements.txt
+  ([`1d05370`](https://github.com/anaticulae/geostrat/commit/1d05370ba0a86aeb8e95e6746ad05541ddb2321b))
 
-### Feature
+- **setup**: Do not deliver files, we do not need any
+  ([`3f5830c`](https://github.com/anaticulae/geostrat/commit/3f5830c864ea393ec7ae7c7880018d28a5b9b9fa))
 
-* add parameter to align data in rows (c0ecb74f09fb)
-* add method to adjust column data (87e2ecc3f875)
+### Code Style
 
-## v1.2.0
-
-## v1.1.12
-
-### Feature
-
-* merge more than one line to page before (5180f24a755e)
-
-## v1.1.11
-
-### Fix
-
-* skip empty container (7d0a739d27a7)
-
-## v1.1.10
-
-### Fix
-
-* skip algorithm for empty column (c11e9191bba7)
-
-## v1.1.9
-
-### Fix
-
-* group last item in double column strategy correctly (25dc73af3e5b)
+- **config**: Add missing copyright header
+  ([`7b068e3`](https://github.com/anaticulae/geostrat/commit/7b068e3802ccc3f825fa116ea13517c799f1e24f))
 
 ### Documentation
 
-* Happy New Year! (d6cad8615c21)
+- **clarify**: Clarify method documentation
+  ([`a3bfe09`](https://github.com/anaticulae/geostrat/commit/a3bfe097ae8f1c5c3631c10cdf4b13026fe38465))
 
-## v1.1.8
+### Refactoring
 
-## v1.1.7
+- **alternate**: Clarify code
+  ([`8d29532`](https://github.com/anaticulae/geostrat/commit/8d2953221ffb3ceecbd36e8f62ce9ddd7bb79310))
 
-### Fix
+- **alternate**: Improve method order
+  ([`a7be29f`](https://github.com/anaticulae/geostrat/commit/a7be29f27b6f0083a8eaf84f05bd763533ea38d9))
 
-* ensure that matching with empty page is skipped (b329aa89ed5a)
+- **alternate**: Reduce complexity
+  ([`9391160`](https://github.com/anaticulae/geostrat/commit/9391160132ff2dc9ea3c9b92c18daa20bbfb19de))
 
-## v1.1.6
 
-## v1.1.5
+## v1.4.0 (2022-05-08)
 
-## v1.1.4
+### Chores
 
-## v1.1.3
+- **requirements**: Upgrade requirements.txt
+  ([`0cd72fa`](https://github.com/anaticulae/geostrat/commit/0cd72fa3f0420ae715998a1c0eca126da5478bf5))
 
-### Fix
+- **requirements**: Upgrade requirements.txt
+  ([`b0b3ec0`](https://github.com/anaticulae/geostrat/commit/b0b3ec0528cfea6856cc33c079a4e97e74261f90))
 
-* skip empty item (68c0025699d1)
+- **requirements**: Upgrade requirements.txt
+  ([`d01bf3c`](https://github.com/anaticulae/geostrat/commit/d01bf3c1e72e794cf7ab9cff4749afd7d97ac01a))
 
-## v1.1.2
+- **resources**: Extend test data generator
+  ([`427cb49`](https://github.com/anaticulae/geostrat/commit/427cb49476bf861637acebfed46fc5d7897d5cdb))
 
-## v1.1.1
+### Code Style
 
-## v1.1.0
+- **changelog**: Fix whitespace
+  ([`d404db1`](https://github.com/anaticulae/geostrat/commit/d404db16ed046c414491a4d82bff6d96fe18f55b))
 
-### Feature
+- **columns**: Format code
+  ([`66cbc47`](https://github.com/anaticulae/geostrat/commit/66cbc4754bfc55fa35be1e0beb66638742c5d232))
 
-* extend public API (e58980b301b6)
+- **docs**: Fix spelling error
+  ([`d216f73`](https://github.com/anaticulae/geostrat/commit/d216f73aa281f7c886e52d2a7cfe94bc31af4c56))
 
-## v1.0.0
-
-### Feature
-
-* move code from sections and generalize (6c953474a406)
+- **index**: Adjust modules headline
+  ([`d933f55`](https://github.com/anaticulae/geostrat/commit/d933f55ab4831cb70509ed982d5940ef6382f5b5))
 
 ### Documentation
 
-* fix rst syntax (1769554bac84)
-* add module documentation with todo (d9ad3b6f6825)
+- **copyright**: Happy New Year!
+  ([`d1fae20`](https://github.com/anaticulae/geostrat/commit/d1fae203865f86e8efe4a7b03a9d03b1b0799eb8))
 
-## v0.1.2
+- **fix**: Adjust modules path
+  ([`4dfa299`](https://github.com/anaticulae/geostrat/commit/4dfa2995765d8e61222c56ea37ac386cf952f682))
 
-## v0.1.1
+### Features
 
-### Feature
+- **columns**: Skip extracted column which contains too few navigator data
+  ([`6a4180f`](https://github.com/anaticulae/geostrat/commit/6a4180f2d5aaea250085e2677b84a1b1710beb43))
 
-* extend public API (69d9c7f5f104)
+- **columns**: Skip unbalanced columns
+  ([`b0f3f07`](https://github.com/anaticulae/geostrat/commit/b0f3f076411e86a9ec4ff36fae74bf69f4b59e34))
 
-## v0.1.0
+### Refactoring
 
-### Feature
+- **alternate**: Replace with texmex code
+  ([`a113a59`](https://github.com/anaticulae/geostrat/commit/a113a599a09c1d62c1b353cc0498a5957e7e34df))
 
-* move geometry grouping code from hey project (adac2f055194)
+- **setup**: Cleanup setup file
+  ([`89bb7f1`](https://github.com/anaticulae/geostrat/commit/89bb7f1a87eac7f6e85f96058586ed9aeb67aa35))
 
-## v0.0.0 Initial release
+### Testing
+
+- **column**: Add no column regression test
+  ([`81cdab5`](https://github.com/anaticulae/geostrat/commit/81cdab5372e5c66ecf3edc2e044ab1d0cb10dea5))
+
+- **refactor**: Adjust naming
+  ([`b41ad52`](https://github.com/anaticulae/geostrat/commit/b41ad52b2d0012a93d35c99ce57548e1ddb0beb3))
+
+- **refactor**: Shorten naming
+  ([`91f970b`](https://github.com/anaticulae/geostrat/commit/91f970ba920fcce3be19fc4e5dc860e414558b27))
+
+- **skip**: Skip tests if data is not generated
+  ([`72780f5`](https://github.com/anaticulae/geostrat/commit/72780f5a7de2eefc5f753899dea1649fdd7bae7b))
+
+- **style**: Format docs
+  ([`23c72b7`](https://github.com/anaticulae/geostrat/commit/23c72b7a87fe528eb8d02b8adc1dcb50e4f6332b))
+
+
+## v1.3.1 (2021-10-22)
+
+### Bug Fixes
+
+- **columns**: Skip empty data selector
+  ([`ccfe354`](https://github.com/anaticulae/geostrat/commit/ccfe3543f1e5cddc09599616efb081efe8718fc2))
+
+
+## v1.3.0 (2021-10-22)
+
+### Chores
+
+- **project**: Move config
+  ([`db52748`](https://github.com/anaticulae/geostrat/commit/db52748afee359ad3875d1ae7227b4b235ff36a9))
+
+- **requirements**: Upgrade requirements.txt
+  ([`346beec`](https://github.com/anaticulae/geostrat/commit/346beec13287440dbc4a973147cf37305b4b1152))
+
+- **resources**: Extend test data generator
+  ([`c1f5efd`](https://github.com/anaticulae/geostrat/commit/c1f5efd7e4332fe9edd87a0a3e08a238b17d8e04))
+
+### Code Style
+
+- **format**: Use improved formatter
+  ([`66c6141`](https://github.com/anaticulae/geostrat/commit/66c61411230aa9950bf71de73e0d455ff919fd25))
+
+### Features
+
+- **columns**: Add method to adjust column data
+  ([`87e2ecc`](https://github.com/anaticulae/geostrat/commit/87e2ecc3f87582a0edf8b3494c0e904cbee8f676))
+
+- **columns**: Add parameter to align data in rows
+  ([`c0ecb74`](https://github.com/anaticulae/geostrat/commit/c0ecb74f09fb8cae569254d408bfb6c04262e595))
+
+### Refactoring
+
+- **double**: Clarify holy values
+  ([`00ea36e`](https://github.com/anaticulae/geostrat/commit/00ea36e299718c0b79ee8a69f047aaf7b8a2b4d7))
+
+- **name**: Clarify naming
+  ([`e995967`](https://github.com/anaticulae/geostrat/commit/e995967e8323c11fd49323b867d8df19976d227b))
+
+### Testing
+
+- **column**: Verify layout parsing example
+  ([`4058865`](https://github.com/anaticulae/geostrat/commit/4058865febfd9b13337dae8ccc8ecd29c66001f3))
+
+
+## v1.2.0 (2021-10-17)
+
+### Chores
+
+- **fix**: Make requirements upgradable
+  ([`b9a5eed`](https://github.com/anaticulae/geostrat/commit/b9a5eed6e82d38d85f8ee0e5f32dc954d527fdfe))
+
+- **requirements**: Add configo
+  ([`6af3a34`](https://github.com/anaticulae/geostrat/commit/6af3a34130a429c7d8ee8bd6586a43a002a824e5))
+
+- **requirements**: Add missing dev resource
+  ([`714f6e7`](https://github.com/anaticulae/geostrat/commit/714f6e7118ce3880bd42cd2a9c63b6fd482f898e))
+
+- **requirements**: Upgrade requirements.txt
+  ([`16c4750`](https://github.com/anaticulae/geostrat/commit/16c4750e61b437031c027388af2965689b60c7da))
+
+- **resources**: Extend test data generator
+  ([`c391e4c`](https://github.com/anaticulae/geostrat/commit/c391e4c3b9cd8b57bbd9219783b4040b933ffb93))
+
+- **resources**: Generate groupme data
+  ([`7597c89`](https://github.com/anaticulae/geostrat/commit/7597c8974fe8f01b4c4c28a26f26079165234f83))
+
+### Refactoring
+
+- **alternate**: Solve linter warning
+  ([`84a6552`](https://github.com/anaticulae/geostrat/commit/84a655244ec137febce9965113e87777e3b5d302))
+
+- **hv**: Replace with holy value concept
+  ([`d87856b`](https://github.com/anaticulae/geostrat/commit/d87856bb92ab16aa0accd6ea90872ac9347f24b7))
+
+### Testing
+
+- **column**: Move tests from groupme project
+  ([`9fd788c`](https://github.com/anaticulae/geostrat/commit/9fd788c8cb1eaf91f8f82f336b4047144ce332da))
+
+
+## v1.1.12 (2021-05-11)
+
+### Features
+
+- **alternate**: Merge more than one line to page before
+  ([`5180f24`](https://github.com/anaticulae/geostrat/commit/5180f24a755e3bde2cdb016adb49a24af5c7a345))
+
+
+## v1.1.11 (2021-01-27)
+
+### Bug Fixes
+
+- **columns**: Skip empty container
+  ([`7d0a739`](https://github.com/anaticulae/geostrat/commit/7d0a739d27a7fd5d19877456256aedc9c62bfee2))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f6ac392`](https://github.com/anaticulae/geostrat/commit/f6ac392c2d4c3b570e84d33328658cc9c305b569))
+
+
+## v1.1.10 (2021-01-20)
+
+### Bug Fixes
+
+- **double**: Skip algorithm for empty column
+  ([`c11e919`](https://github.com/anaticulae/geostrat/commit/c11e9191bba7421b48ade9718ab3c9c945ed28b1))
+
+
+## v1.1.9 (2021-01-20)
+
+### Bug Fixes
+
+- **double**: Group last item in double column strategy correctly
+  ([`25dc73a`](https://github.com/anaticulae/geostrat/commit/25dc73af3e5bc20638a2388e3e2d87980b0322bb))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a934fa0`](https://github.com/anaticulae/geostrat/commit/a934fa0eefc50c785c7cc3d2ed38b0d7f04996fb))
+
+### Documentation
+
+- **copyright**: Happy New Year!
+  ([`d6cad86`](https://github.com/anaticulae/geostrat/commit/d6cad8615c2185c75cea6dce5b7690c9ffddcf9a))
+
+
+## v1.1.8 (2021-01-12)
+
+### Chores
+
+- **requirements**: Do not release so often
+  ([`7d3a93f`](https://github.com/anaticulae/geostrat/commit/7d3a93f886583bf06ae14b30852dc74d310252e2))
+
+- **requirements**: Upgrade requirements.txt
+  ([`f139b7b`](https://github.com/anaticulae/geostrat/commit/f139b7ba592ceed47e3babf7ef595c902f62eb37))
+
+
+## v1.1.7 (2021-01-04)
+
+### Bug Fixes
+
+- **alternate**: Ensure that matching with empty page is skipped
+  ([`b329aa8`](https://github.com/anaticulae/geostrat/commit/b329aa89ed5a7e16a9bdc9877632a5c867e70c6c))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d21f586`](https://github.com/anaticulae/geostrat/commit/d21f5862a8be8a739cb88d3bf60d7657d92ed873))
+
+- **resources**: Increase used worker
+  ([`068475e`](https://github.com/anaticulae/geostrat/commit/068475e750f10e8772ce4cd7aca45b8616eef7e1))
+
+
+## v1.1.6 (2020-12-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a525cc9`](https://github.com/anaticulae/geostrat/commit/a525cc99b5397f725c7f0b97fadef44a60f7b62d))
+
+
+## v1.1.5 (2020-12-04)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5b521a1`](https://github.com/anaticulae/geostrat/commit/5b521a1d271badc01562ba65775ceb386333e136))
+
+
+## v1.1.4 (2020-11-19)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`2b7a5b4`](https://github.com/anaticulae/geostrat/commit/2b7a5b4ba9852706937b9a9978571ac41ad3903b))
+
+
+## v1.1.3 (2020-11-02)
+
+### Bug Fixes
+
+- **utils**: Skip empty item
+  ([`68c0025`](https://github.com/anaticulae/geostrat/commit/68c0025699d1307c4d88713e66a8b09fcebbfd6a))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3b67646`](https://github.com/anaticulae/geostrat/commit/3b676465b2278a660b2ae79be375c6c2f09bbf4d))
+
+### Refactoring
+
+- **style**: Simplify code
+  ([`2d50ba8`](https://github.com/anaticulae/geostrat/commit/2d50ba86a53dd775f753cfc6497667516d900b3b))
+
+
+## v1.1.2 (2020-10-27)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`226dd90`](https://github.com/anaticulae/geostrat/commit/226dd906d75ba106157da501fc419681a7106474))
+
+
+## v1.1.1 (2020-10-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`8c0b63f`](https://github.com/anaticulae/geostrat/commit/8c0b63fb698c814ed540f05c62dfa4517e654926))
+
+
+## v1.1.0 (2020-10-08)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`6f15bd5`](https://github.com/anaticulae/geostrat/commit/6f15bd559d0d5105a1fd5c8c856c9496c065f040))
+
+- **test**: Extend test data generator
+  ([`4bb8024`](https://github.com/anaticulae/geostrat/commit/4bb80244f1a491cfaec31a6ad57819b547569277))
+
+### Features
+
+- **API**: Extend public API
+  ([`e58980b`](https://github.com/anaticulae/geostrat/commit/e58980b301b6432d865abc5b85b777f2b3f179c9))
+
+### Testing
+
+- **move**: Move double column tests from `sections` project
+  ([`2b64171`](https://github.com/anaticulae/geostrat/commit/2b64171513d4b62c50b62ed942c27b5d237ccce6))
+
+
+## v1.0.0 (2020-09-26)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`060203d`](https://github.com/anaticulae/geostrat/commit/060203d28a14188b6ba116f6b1652a68650c5186))
+
+- **test**: Extend test data generator
+  ([`1895f66`](https://github.com/anaticulae/geostrat/commit/1895f66ad959fe1bb8e6065b8e36be93ef4f5ede))
+
+### Documentation
+
+- **columns**: Add module documentation with todo
+  ([`d9ad3b6`](https://github.com/anaticulae/geostrat/commit/d9ad3b6f6825ed4501da75a7640a5a1b3443bdeb))
+
+- **fix**: Fix rst syntax
+  ([`1769554`](https://github.com/anaticulae/geostrat/commit/1769554bac8486a402770b814f4f64366dd22a3b))
+
+### Features
+
+- **column**: Move code from sections and generalize
+  ([`6c95347`](https://github.com/anaticulae/geostrat/commit/6c953474a4062f5ca28931a899d270e46629359c))
+
+### Refactoring
+
+- **API**: Rename column extractor method
+  ([`b2c4e2d`](https://github.com/anaticulae/geostrat/commit/b2c4e2d9717a197998f70f81f9811ae4dcd6bcd0))
+
+### Testing
+
+- **column**: Add example without any columns or lining points
+  ([`2b9141a`](https://github.com/anaticulae/geostrat/commit/2b9141ac7b0e33bd2a869d487e75e722ae791678))
+
+- **columns**: Add test to parse triple column
+  ([`be8a984`](https://github.com/anaticulae/geostrat/commit/be8a9840d76d92488378bf78106a98ccdfc0a462))
+
+
+## v0.1.2 (2020-09-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4a95a32`](https://github.com/anaticulae/geostrat/commit/4a95a32056a3bba9adef1dc5319a394ef7b56ee2))
+
+
+## v0.1.1 (2020-09-09)
+
+### Features
+
+- **API**: Extend public API
+  ([`69d9c7f`](https://github.com/anaticulae/geostrat/commit/69d9c7f5f104feac1dcdc2af1a1c408023450e45))
+
+
+## v0.1.0 (2020-09-09)
+
+### Chores
+
+- **requirements**: Add requirements
+  ([`934ecc6`](https://github.com/anaticulae/geostrat/commit/934ecc6eb67651dc35c8fc00850fff99aee7c3d5))
+
+- **test**: Move tests from hey project
+  ([`daa71ce`](https://github.com/anaticulae/geostrat/commit/daa71ce3ac1b1dd9ad8632cfea5e934c002fe2bb))
+
+### Features
+
+- **move**: Move geometry grouping code from hey project
+  ([`adac2f0`](https://github.com/anaticulae/geostrat/commit/adac2f0551945f055f5327b7ed9aeb3a243aa682))
+
+
+## v0.0.0 (2020-09-09)
+
+- Initial Release
