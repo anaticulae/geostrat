@@ -1,0 +1,82 @@
+[build-system]
+requires = [
+    "setuptools>=82.0.1",
+    "wheel>=0.47.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geostrat"
+version = "1.4.5"
+description = ""
+requires-python = ">=3.12"
+authors = [
+    { name = "Helmut Konrad Schewe", email = "helmutus@outlook.com" },
+]
+dependencies = [
+    "utilo>=2.107.4,<3.0.0",
+    "configos>=1.0.4,<2.0.0",
+    "iamraw>=4.91.4,<5.0.0",
+]
+keywords = []
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+license = "MIT"
+license-files = [
+    "LICENSE",
+]
+
+[project.readme]
+file = "README"
+content-type = "text/markdown"
+
+[project.optional-dependencies]
+dev = [
+    "utilotest>=1.0.1,<2.0.0",
+    "hoverpower==1.2.0",
+    "gennex==1.0.3",
+]
+
+[project.urls]
+Homepage = "https://github.com/anaticulae/geostrat"
+Repository = "https://github.com/anaticulae/geostrat"
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:project.version",
+]
+
+[tool.semantic_release.changelog]
+mode = "init"
+output_format = "md"
+
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG"
+
+[tool.semantic_release.commit_parser_options]
+patch_tags = [
+    "fix",
+    "perf",
+    "build",
+    "chore",
+    "ci",
+    "docs",
+    "style",
+    "refactor",
+    "test",
+    "deps",
+]
+
+[tool.setuptools.packages.find]
+where = [
+    ".",
+]
+include = [
+    "geostrat",
+]
+exclude = [
+    "tests*",
+]

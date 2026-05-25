@@ -8,6 +8,7 @@
 #==============================================================================
 
 import os
+from importlib.metadata import version
 
 from geostrat.alternate import AlternateGeometryException
 from geostrat.alternate import NoMultipleLiningPoints
@@ -22,7 +23,6 @@ from geostrat.double_column import columns as dc_columns
 from geostrat.double_column import parse_page as dc_parse_page
 from geostrat.double_column import split_bymarker
 
-__version__ = '1.4.5'
-
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PACKAGE = 'geostrat'
+__version__ = version(PACKAGE)
