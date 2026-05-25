@@ -56,13 +56,13 @@ def test_parse_master89_external_liningpoints_single():
 
 
 def test_parse_bachelor56_page49_whitespace_error():
-    pages = (49)
+    pages = 49
     parsed = load_and_parse(pages, hoverpower.BACHELOR056_PDF)[0]
     assert len(parsed) == 8, str(parsed)
 
 
 def test_parse_bachelor56_page51_hurenkind_error():
-    pages = (51)
+    pages = 51
     parsed = load_and_parse(pages, hoverpower.BACHELOR056_PDF)[0]
     assert len(parsed) == 8, str(parsed)
 

@@ -18,7 +18,7 @@ import geostrat.double_column
 @utilotest.requires(hoverpower.BACHELOR063_PDF)
 def test_parse_column_bachelor63_page59():
     """Latex double column. Left side with [Hem10] pattern"""
-    pages = (59)
+    pages = 59
     navigators = serializeraw.ptn_frompath(
         hoverpower.link(hoverpower.BACHELOR063_PDF),
         # fill_empty=False,
@@ -76,7 +76,8 @@ def test_extract_columns_bachelor37complete():
     ptns = serializeraw.ptn_frompath(source)
     doubled = [page.page for page in ptns if geostrat.parse(page)]
     # it is possible that more than required pages can be inside
-    inside = [item in doubled for item in [33, 34, 35, 36]]
+    valid = {33, 34, 35, 36}
+    inside = (item in doubled for item in valid)
     assert all(inside), str(inside)
 
 
